@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
 import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title?: string;
@@ -52,6 +53,7 @@ const canonical = new URL(pathname, siteMeta.domain).toString();
     <Font cssVariable="--font-body" preload />
     <ClientRouter />
     <script is:inline defer data-domain="civanta.io" src="https://plausible.io/js/script.js"></script>
+    <Analytics />
     <title>{title}</title>
   </head>
   <body class="bg-surface text-text">
