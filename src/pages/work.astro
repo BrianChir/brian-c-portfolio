@@ -1,0 +1,18 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products } from '../data/products';
+---
+
+<BaseLayout pathname="/work" title="Products - Brian Chirchir" description="Products Brian Chirchir has built, shaped, or specified across fintech, clean energy, civic tech, AI, and entrepreneurship training.">
+  <section class="section-shell pt-24 pb-20">
+    <p class="mb-3 text-label font-semibold uppercase text-accent">Products</p>
+    <h1 class="mb-3 font-display text-page-title font-normal text-text">Built around real constraints.</h1>
+    <p class="mb-12 max-w-measure text-body text-text-secondary">
+      A focused view of products I have built, managed, or specified across fintech, clean energy, civic tech, AI, and entrepreneurship training. Each product is framed by the problem it answers, the solution approach, and the outcome it created or is designed to create.
+    </p>
+    {products.map((product) => <ProductCard product={product} />)}
+  </section>
+</BaseLayout>

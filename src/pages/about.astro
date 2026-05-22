@@ -1,0 +1,88 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CredentialsGrid from '../components/CredentialsGrid.astro';
+import EducationList from '../components/EducationList.astro';
+import ExperienceList from '../components/ExperienceList.astro';
+import PrincipleBlock from '../components/PrincipleBlock.astro';
+import { credentials, education, experience, principles } from '../data/about';
+import { siteMeta } from '../data/site';
+import { analyticsAttributes } from '../lib/analytics';
+
+const valuePropositions = [
+  {
+    headline: 'I hold the product thread from first conversation to shipped release.',
+    detail: "I am most useful when the work is still messy: a problem needs framing, users need listening to, and the team needs a path from uncertainty to delivery.",
+  },
+  {
+    headline: 'I design for places where infrastructure is part of the product.',
+    detail: "M-PESA, USSD, offline-first flows, low-bandwidth constraints, and field teams on feature phones are not edge cases to me. They are the brief.",
+  },
+  {
+    headline: 'I turn methods and field knowledge into usable systems.',
+    detail: "I like the awkward middle ground between a proven methodology and a working product: preserving what makes the method credible while changing what makes it hard to use.",
+  },
+];
+---
+
+<BaseLayout pathname="/about" title="About - Brian Chirchir" description="How Brian Chirchir thinks about product, the domains he has worked in, and the teams he has built with.">
+  <section class="section-shell pt-24 pb-20">
+    <p class="mb-3 text-label font-semibold uppercase text-accent">About</p>
+    <div class="mb-12 grid gap-8 md:grid-cols-[minmax(0,1fr)_260px] md:items-start">
+      <div>
+        <h1 class="mb-8 font-display text-page-title font-normal text-text">The person behind the products.</h1>
+        <div class="about-bio max-w-measure space-y-4 text-body text-text-secondary">
+          <p class="text-left">I'm Brian Chirchir, a product manager, builder, and ILO-certified trainer based in Nairobi. I've spent 8+ years shaping products at Safaricom/M-PESA, IntelliSOFT, GeoPoll, and 4RDigital, and I now run my own company, Civanta.io, where I'm building tools for financial inclusion and entrepreneurship training.</p>
+          <p class="text-left">I hold an MSc from University West in Sweden, where I studied on a Swedish Institute scholarship and wrote my thesis on AI in project management through Activity Theory. That blend of the technical and the human is the thread through everything I do.</p>
+          <p class="text-left">Outside of product work, I'm a purpose-driven person who believes technology should reduce inequality, not widen it. I'm drawn to problems where the gap between what exists and what people need is wide enough to matter and narrow enough to close with good craft.</p>
+        </div>
+      </div>
+      <figure class="overflow-hidden rounded-lg border border-border bg-surface-card">
+        <img src="/brian.png" alt="Brian Chirchir" class="aspect-[4/5] h-full w-full object-cover object-center" loading="lazy" />
+        <figcaption class="border-t border-border px-4 py-3 text-body-xs text-text-secondary">
+          Nairobi-based product builder, trainer, and founder.
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="border-t border-border pt-10">
+      <h2 class="mb-8 font-display text-[22px] font-normal text-text">How I approach the work.</h2>
+      {principles.map((principle) => <PrincipleBlock {...principle} />)}
+      <p class="mt-6 text-body-sm text-text-secondary">
+        These principles show up most clearly in the product stories, especially <a href="/work#daylipa-paygo" class="ui-link text-accent">PAYGO solar reconciliation</a>, <a href="/work#bds-mentorship-platform" class="ui-link text-accent">SIYB mentorship</a>, and <a href="/work#sank-election-platform" class="ui-link text-accent">secure alumni voting</a>.
+      </p>
+    </div>
+
+    <div class="mt-12 border-t border-border pt-10">
+      <h2 class="mb-8 font-display text-[22px] font-normal text-text">What I bring to the table.</h2>
+      <div class="max-w-measure space-y-6">
+        {valuePropositions.map((prop) => (
+          <div>
+            <p class="mb-2 text-body-sm font-bold text-text">{prop.headline}</p>
+            <p class="m-0 text-body-sm text-text-secondary">{prop.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <CredentialsGrid items={credentials} />
+
+    <div class="mt-10 border-t border-border pt-10">
+      <h2 class="mb-6 font-display text-[22px] font-normal text-text">Where I've shipped.</h2>
+      <ExperienceList items={experience} />
+      <a
+        href={siteMeta.linkedin}
+        class="ui-link mt-6 inline-flex min-h-12 cursor-pointer items-center text-body-sm font-medium text-accent"
+        {...analyticsAttributes('external_link_click', 'about-linkedin-career')}
+      >
+        Full career history on LinkedIn &rarr;
+      </a>
+    </div>
+
+    <div class="mt-8 border-t border-border pt-8">
+      <h2 class="mb-6 font-display text-[22px] font-normal text-text">Education.</h2>
+      <EducationList items={education} />
+    </div>
+  </section>
+</BaseLayout>

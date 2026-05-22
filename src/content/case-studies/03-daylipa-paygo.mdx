@@ -1,0 +1,38 @@
+---
+number: '03'
+slug: 'daylipa-paygo'
+phase: 'Build -> Ship'
+category: 'Enterprise · IoT'
+title: 'Built payment reconciliation for solar PAYGO'
+subtitle: 'Pay-as-you-go solar through M-PESA reconciliation'
+description: 'Product Owner on DayLipa, an M-PESA C2B reconciliation engine for PAYGO solar operators managing 5,000-plus connected devices where payment-device mismatches translated directly into customer trust failures.'
+tags:
+  - 'Product Owner'
+  - 'M-PESA C2B'
+  - 'USSD'
+problem: 'PAYGO solar operators relied on near-real-time reconciliation between M-PESA payments and device activation. When reconciliation failed, families who had already paid could lose access to light, which created immediate support volume and long-term trust erosion.'
+user: 'Solar PAYGO operators managing thousands of devices, plus field engineers troubleshooting payment mismatches in low-connectivity environments with feature phones.'
+constraints:
+  - 'M-PESA callbacks could be delayed, duplicated, or arrive out of order, so real-time assumptions were unsafe.'
+  - 'Activation latency directly affected customer trust because paid households expected power to return within minutes.'
+  - 'Most field engineers used feature phones, which ruled out native or mobile-web operational tooling.'
+  - 'Operators needed self-serve business intelligence because lean engineering teams could not keep answering custom reporting requests.'
+decisions:
+  - title: 'Designed for idempotent reconciliation with eventual consistency'
+    detail: 'Instead of forcing fragile real-time assumptions onto an unreliable callback pipeline, the reconciliation engine accepted duplicates and reorderings while converging safely within minutes.'
+  - title: 'Built the field flow around USSD'
+    detail: 'Observation showed the real device landscape in the field. USSD was the only interface every engineer could access, so troubleshooting workflows had to fit that constraint.'
+  - title: 'Specified the dashboard as a self-serve analytics layer'
+    detail: 'The dashboard was designed to answer regional, collections, and performance questions without creating a constant queue of engineering report requests.'
+role: 'Served as Product Owner inside a cross-functional team at 4RDigital. Authored reconciliation documentation, specified the service engineering platform and USSD workflows, wrote the dashboard feature spec, and managed sprint and stakeholder alignment.'
+outcomes:
+  - 'Shipped an M-PESA C2B reconciliation approach that removed payment-device mismatch errors caused by duplicate or out-of-order callbacks.'
+  - 'Specified a USSD-based field operations flow aligned with the actual feature-phone reality of service teams.'
+  - 'Defined acceptance criteria for 12 dashboard views so operators could answer operational questions without engineering mediation.'
+  - 'Reduced support risk by making the consistency model explicit for both engineers and operators.'
+reflection: 'The product lesson here was that technical reliability and stakeholder understanding are inseparable. I had to explain the consistency model almost as carefully as I specified it, because trust depended on both the behavior and the shared mental model.'
+sortOrder: 3
+featured: true
+---
+
+DayLipa is a strong portfolio case because it ties product judgment directly to system reliability and customer trust.

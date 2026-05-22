@@ -1,0 +1,38 @@
+---
+import { siteMeta } from '../data/site';
+import { analyticsAttributes } from '../lib/analytics';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  body?: string;
+}
+
+const { eyebrow = 'Iterate', title, body } = Astro.props;
+---
+
+<section class="bg-surface-alt py-14">
+  <div class="section-shell text-center">
+    <p class="mb-3 text-label font-semibold uppercase text-text-secondary">{eyebrow}</p>
+    <h2 class="text-balance mb-6 font-display text-section-title font-normal text-text">
+      {title}
+    </h2>
+    {body && <p class="mx-auto mb-8 max-w-measure text-body text-text-secondary">{body}</p>}
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a
+        href={`mailto:${siteMeta.email}`}
+        class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded bg-accent px-6 py-3 text-[13px] font-semibold text-surface transition-colors duration-200 hover:bg-text"
+        {...analyticsAttributes('cta_click', 'terminal-email')}
+      >
+        Email me
+      </a>
+      <a
+        href={siteMeta.linkedin}
+        class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-card px-6 py-3 text-[13px] font-semibold text-text transition-colors duration-200 hover:border-accent"
+        {...analyticsAttributes('external_link_click', 'terminal-linkedin')}
+      >
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>

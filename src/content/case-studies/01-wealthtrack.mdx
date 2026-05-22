@@ -1,0 +1,38 @@
+---
+number: '01'
+slug: 'wealthtrack'
+phase: 'Discover -> Ship'
+category: 'Fintech · PWA'
+title: 'Built a personal finance app for M-PESA users'
+subtitle: 'Personal finance for East Africa''s mobile-first users'
+description: 'Designed and shipped WealthTrack, a PWA that parses M-PESA statements, auto-categorizes transactions through a 14-category AI taxonomy, and gives East African users a clearer view of net worth across mobile money and bank accounts.'
+tags:
+  - 'Owned product strategy'
+  - '94% parse accuracy'
+  - 'PWA'
+problem: 'Most personal finance tools assume Western banking rails, stable internet, and card-first transaction histories. In East Africa, users needed visibility into spending, savings, and net worth across mobile money and bank accounts without switching away from the systems they already trusted.'
+user: 'Young professionals and small business owners in Kenya who transact primarily through M-PESA and want more financial awareness without changing their behavior or devices.'
+constraints:
+  - 'Offline-first usage on 3G pushed the product toward a PWA instead of native app distribution.'
+  - 'M-PESA statements arrived in inconsistent formats, which made parsing edge cases a product risk, not just a technical detail.'
+  - 'Users held value across KES, USD, and UGX, so net worth calculations needed useful currency conversion without false precision.'
+  - 'Financial data required zero-plaintext encryption and strong anonymization from day one.'
+decisions:
+  - title: 'Chose PWA over native'
+    detail: 'User interviews showed many target users avoid large downloads because of storage and data costs. The tradeoff was losing native background behavior in exchange for zero install friction and broader reach.'
+  - title: 'Built a 14-category AI transaction taxonomy'
+    detail: 'The taxonomy was shaped by 500-plus real transaction descriptions because imported banking categories did not reflect M-PESA behavior such as agent fees, airtime, and peer transfers.'
+  - title: 'Made net worth the anchor feature'
+    detail: 'Research showed users responded better to wealth visibility than budgeting discipline. That reframed the product from a restrictive budgeting app into a confidence-building finance tool.'
+role: 'Led product strategy end to end. Defined the data model, encryption approach, and categorization model, partnered with a frontend engineer during the Supabase migration, and ran user testing with 12 participants in Nairobi.'
+outcomes:
+  - 'Reached 94% categorization accuracy across the 14-category taxonomy.'
+  - 'Documented the zero-plaintext encryption and anonymization model that became the platform security standard.'
+  - 'Migrated from Lovable Cloud to Supabase and Vercel without service disruption while improving query performance and hosting efficiency.'
+  - 'Extracted an OfflineFirst Finance concept from the codebase for an Andela hackathon submission, proving the architecture was modular.'
+reflection: 'I underestimated how much M-PESA parsing edge cases would shape delivery risk. The more important lesson was framing: users were more motivated by visibility into wealth than by spending discipline, so the product had to reduce anxiety before it added control.'
+sortOrder: 1
+featured: true
+---
+
+WealthTrack is the clearest example in the portfolio of turning market constraints into the product brief instead of treating them as technical exceptions.

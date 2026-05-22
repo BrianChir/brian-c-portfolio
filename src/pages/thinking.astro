@@ -1,0 +1,65 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteMeta } from '../data/site';
+import { analyticsAttributes } from '../lib/analytics';
+
+const topicTeasers = [
+  { title: 'M-PESA UX decisions and financial behavior', related: '/work#wealthtrack' },
+  { title: 'Designing offline-first finance for low-bandwidth markets', related: '/work#wealthtrack' },
+  { title: 'Trust architecture in civic technology', related: '/work#sank-election-platform' },
+  { title: 'Turning SIYB methodology into product constraints', related: '/work#bizframer' },
+];
+---
+
+<BaseLayout pathname="/thinking" title="Thinking - Brian Chirchir" description="Product teardowns, use cases, frameworks, and lessons from building in East Africa's fastest-moving markets.">
+  <section class="section-shell pt-24 pb-20">
+    <p class="mb-3 text-label font-semibold uppercase text-accent">Thinking</p>
+    <h1 class="mb-3 font-display text-page-title font-normal text-text">Lessons worth sharing.</h1>
+    <p class="mb-8 max-w-measure text-body text-text-secondary">
+      Product teardowns, use cases, and frameworks drawn from building in markets where the textbook doesn't apply.
+    </p>
+    <section class="rounded-lg border border-border bg-surface-card p-6">
+      <p class="mb-3 text-label-sm font-semibold uppercase text-accent">Writing in progress</p>
+      <h2 class="mb-3 font-display text-case-title font-medium text-text">First essays are being shaped from shipped work.</h2>
+      <p class="mb-5 max-w-measure text-body-sm text-text-secondary">
+        I am turning lessons from M-PESA, PAYGO solar, civic tech, SIYB training, and AI facilitation into publishable essays. Until the first piece is ready, the Products page is the best place to see the thinking in practice.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="/work"
+          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-alt px-5 py-3 text-[13px] font-semibold text-text hover:border-accent"
+          {...analyticsAttributes('cta_click', 'thinking-products')}
+        >
+          Read the product stories
+        </a>
+        <a
+          href={`mailto:${siteMeta.email}?subject=Notify%20me%20when%20your%20first%20essay%20is%20published`}
+          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded bg-accent px-5 py-3 text-[13px] font-semibold text-surface hover:bg-text"
+          {...analyticsAttributes('cta_click', 'thinking-notify-email')}
+        >
+          Notify me
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-8 border-t border-border pt-8">
+      <p class="mb-4 text-label-sm font-semibold uppercase text-text-secondary">Topics taking shape</p>
+      <div class="divide-y divide-border rounded-lg border border-border bg-surface-card">
+        {topicTeasers.map((topic) => (
+          <a
+            href={topic.related}
+            class="surface-hover flex min-h-12 cursor-pointer items-center justify-between gap-4 px-5 py-4 hover:bg-surface-alt"
+            {...analyticsAttributes('cta_click', `thinking-topic-${topic.title}`)}
+          >
+            <span class="text-body-sm font-medium text-text">{topic.title}</span>
+            <span class="shrink-0 rounded border border-amber-500/35 bg-amber-500/10 px-2 py-1 text-label-sm font-medium normal-case tracking-normal text-amber-200">
+              Coming
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </section>
+</BaseLayout>

@@ -1,0 +1,66 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.astro/
+
+# Vercel
+.vercel/
+
+# AI / agent tooling
+.claude/
+.codex/
+.cursor/
+.windsurf/
+
+# Editor
+.vscode/
+.idea/
+CLAUDE.md
+.claude/
+.codex/
+.cursor/
+.windsurf/
+.vscode/
+.astro/
+dist/
+node_modules/
+.vercel/
+
+
+
+# Local OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Logs
+*.log
+
+# Cache
+.cache/
+
+# Misc
+Microsoft/
+
+# Internal docs / agent instructions
+Portfolio_Design_Standards.md
+CLAUDE.md
+
+# Agent folders
+.claude/
+.codex/
+.cursor/
+.windsurf/
+
+# Local
+.vscode/
+.vercel/
+node_modules/
+dist/
+.astro/

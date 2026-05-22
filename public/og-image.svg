@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Brian Chirchir portfolio social card</title>
+  <desc id="desc">Brian Chirchir, Product Builder working across fintech, civic tech, and enterprise.</desc>
+  <rect width="1200" height="630" fill="#121211" />
+  <rect x="64" y="64" width="1072" height="502" rx="8" fill="#181715" stroke="#34302b" />
+  <text x="116" y="184" font-family="Georgia, serif" font-size="34" fill="#d9855f">Product Builder</text>
+  <text x="116" y="292" font-family="Georgia, serif" font-size="86" fill="#f4efe7">Brian Chirchir</text>
+  <text x="116" y="386" font-family="Arial, sans-serif" font-size="34" fill="#c9beb2">Fintech · Civic Tech · Enterprise</text>
+  <text x="116" y="450" font-family="Arial, sans-serif" font-size="28" fill="#c9beb2">I turn constraints into products people trust.</text>
+  <text x="116" y="512" font-family="Arial, sans-serif" font-size="24" fill="#8d8175">civanta.io</text>
+</svg>

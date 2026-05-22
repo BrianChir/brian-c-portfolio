@@ -1,0 +1,51 @@
+---
+import { siteMeta } from '../data/site';
+import { analyticsAttributes } from '../lib/analytics';
+---
+
+<section class="hero-shell">
+  <div class="hero-grid">
+    <div class="max-w-[720px]">
+      <p class="mb-4 text-label font-semibold uppercase text-accent">Product Manager &amp; Builder · Nairobi</p>
+      <h1 class="text-balance mb-6 font-display text-[clamp(34px,4.2vw,52px)] font-semibold leading-[1.12] tracking-[-0.025em] text-text">
+        Brian Chirchir turns constraints into products people trust.
+      </h1>
+      <p class="mb-6 max-w-[690px] text-body text-text-secondary">
+        Fintech, civic tech, enterprise: I build in markets where bandwidth is limited, trust is fragile, and the wrong design decision costs more than a bug ever could. I own the full product lifecycle: problem framing, research, architecture, delivery, and the hard conversations in between.
+      </p>
+
+      <div class="mb-8 flex flex-wrap gap-3">
+        <a
+          href={`mailto:${siteMeta.email}`}
+          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded bg-accent px-6 py-3 text-[13px] font-semibold text-surface transition-colors duration-200 hover:bg-text hover:text-surface"
+          {...analyticsAttributes('cta_click', 'hero-email')}
+        >
+          Let's talk
+        </a>
+        <a
+          href="/work"
+          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-card px-6 py-3 text-[13px] font-semibold text-text transition-colors duration-200 hover:border-accent"
+          {...analyticsAttributes('cta_click', 'hero-view-projects')}
+        >
+          See what I've built
+        </a>
+      </div>
+    </div>
+
+    <figure class="hero-media overflow-hidden rounded-lg border border-border bg-surface-card">
+      <img
+        src="/brian.png"
+        alt="Brian Chirchir"
+        class="aspect-[4/5] h-full w-full object-cover object-center"
+        loading="eager"
+      />
+      <figcaption class="border-t border-border px-5 py-4 text-body-xs text-text-secondary">
+        Nairobi-based, building for places where trust is earned in the details.
+      </figcaption>
+    </figure>
+  </div>
+
+  <p class="mb-6 mt-6 text-small font-medium text-accent">Open to product roles · Remote-first · Emerging markets focus</p>
+
+  <slot />
+</section>

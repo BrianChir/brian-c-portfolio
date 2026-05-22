@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">BC logo mark</title>
+  <rect width="128" height="128" rx="16" fill="#121211" />
+  <rect x="8" y="8" width="112" height="112" rx="8" fill="#181715" stroke="#34302b" />
+  <text x="27" y="78" font-family="Georgia, serif" font-size="44" font-weight="600" fill="#f4efe7">BC</text>
+  <circle cx="95" cy="76" r="4" fill="#d9855f" />
+</svg>

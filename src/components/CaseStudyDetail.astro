@@ -1,0 +1,87 @@
+---
+interface Decision {
+  title: string;
+  detail: string;
+}
+
+interface StudyData {
+  problem: string;
+  user: string;
+  constraints: string[];
+  decisions: Decision[];
+  role: string;
+  outcomes: string[];
+  reflection: string;
+}
+
+interface Props {
+  study: StudyData;
+}
+
+const { study } = Astro.props;
+---
+
+<div class="space-y-10">
+  <div class="grid gap-6 md:grid-cols-2 md:gap-x-10">
+    <section>
+      <h3 class="mb-3 font-display text-subsection font-medium text-text">The problem</h3>
+      <p class="m-0 text-body-sm text-text-secondary">{study.problem}</p>
+    </section>
+    <section>
+      <h3 class="mb-3 font-display text-subsection font-medium text-text">The user</h3>
+      <p class="m-0 text-body-sm text-text-secondary">{study.user}</p>
+    </section>
+  </div>
+
+  <section>
+    <h3 class="mb-4 font-display text-subsection font-medium text-text">Constraints</h3>
+    <div class="grid gap-4 md:grid-cols-2">
+      {study.constraints.map((constraint) => (
+        <div class="rounded-md bg-surface-alt px-4 py-3">
+          <p class="m-0 text-body-xs text-text-secondary">
+            <span class="mr-2 text-accent">→</span>{constraint}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h3 class="mb-4 font-display text-subsection font-medium text-text">Key decisions</h3>
+    <div class="space-y-4">
+      {study.decisions.map((decision, index) => (
+        <div class="border-t border-border pt-4 first:border-t-0 first:pt-0">
+          <div class="mb-2 flex items-start gap-3">
+            <span class="font-display text-[16px] italic text-accent">{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <p class="mb-2 text-body-sm font-bold text-text">{decision.title}</p>
+              <p class="m-0 text-body-sm text-text-secondary">{decision.detail}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <div class="grid gap-6 md:grid-cols-2 md:gap-x-10">
+    <section>
+      <h3 class="mb-3 font-display text-subsection font-medium text-text">My role</h3>
+      <p class="m-0 text-body-sm text-text-secondary">{study.role}</p>
+    </section>
+    <section>
+      <h3 class="mb-3 font-display text-subsection font-medium text-text">Outcomes</h3>
+      <ul class="m-0 space-y-2 pl-0">
+        {study.outcomes.map((outcome) => (
+          <li class="list-none text-body-sm text-text-secondary">
+            <span class="mr-2 text-accent">✦</span>{outcome}
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+
+  <section class="border-l-[3px] border-accent bg-surface-alt px-6 py-5">
+    <h3 class="mb-3 font-display text-subsection font-medium text-text">Reflection</h3>
+    <p class="m-0 text-body-sm italic text-text-secondary">{study.reflection}</p>
+  </section>
+</div>

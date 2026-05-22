@@ -1,0 +1,38 @@
+---
+interface Item {
+  institution: string;
+  url: string;
+  degree: string;
+  note: string | null;
+  period: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<div>
+  {items.map((item) => (
+    <article class="group border-b border-border py-5 transition-colors duration-200 hover:border-accent hover:bg-surface-alt">
+      <div class="grid gap-2">
+        <a
+          href={item.url}
+          class="ui-link inline-flex min-h-12 w-fit max-w-full cursor-pointer items-center text-body-sm font-bold text-text"
+          aria-label={`${item.institution} website`}
+        >
+          {item.institution}
+        </a>
+        <div class="grid gap-2 sm:grid-cols-[minmax(0,1fr)_92px] sm:items-start">
+          <div class="min-w-0">
+            <p class="m-0 text-body-sm font-bold text-text">{item.degree}</p>
+            {item.note && <p class="m-0 text-body-xs text-text-secondary">{item.note}</p>}
+          </div>
+          <p class="m-0 text-body-xs text-text-secondary sm:text-right">{item.period}</p>
+        </div>
+      </div>
+    </article>
+  ))}
+</div>

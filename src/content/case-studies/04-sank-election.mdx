@@ -1,0 +1,38 @@
+---
+number: '04'
+slug: 'sank-election'
+phase: 'Define -> Ship'
+category: 'Civic Tech · Security'
+title: 'Designed a secure election system for an alumni network'
+subtitle: 'Secure digital democracy for a diaspora alumni network'
+description: 'End-to-end product ownership on the SANK e-Election System, a digital voting platform for about 200 Swedish Institute alumni where the defining product decision was choosing legitimacy over convenience.'
+tags:
+  - 'End-to-end ownership'
+  - 'Security-first'
+  - '~200 members'
+problem: 'Sweden Alumni Network Kenya needed a remote election system after earlier digital voting attempts failed to win trust. Members questioned eligibility verification, ballot secrecy, and whether results could be manipulated.'
+user: 'SANK members voting remotely and the election committee responsible for running a credible, auditable process.'
+constraints:
+  - 'Perceived manipulation would delegitimize the board, so trust and auditability outweighed convenience.'
+  - 'Technical comfort varied widely across the membership, which forced clarity and restraint in the interaction design.'
+  - 'There was no budget for commercial voting tools, so the system had to be designed from accessible components and volunteer-friendly delivery.'
+  - 'The product scope covered the full election lifecycle, not just ballot casting.'
+decisions:
+  - title: 'Pivoted from self-registration to CSV voter import'
+    detail: 'Security analysis showed self-registration could not reliably prove member eligibility. Admin-controlled voter import raised committee effort but removed the credibility gap.'
+  - title: 'Specified a security-first architecture'
+    detail: 'The proposed stack favored auditability and isolation over raw development speed because legitimacy was the actual product outcome.'
+  - title: 'Used a consistent, accessibility-minded interaction model'
+    detail: 'The system documentation emphasized consistent patterns across nominations, verification, voting, and results so members would not have to relearn the interface mid-process.'
+role: 'Owned the product end to end. Authored the PRD, user flows, technical architecture, security specifications, and design documentation, and worked directly with the election committee on requirements and review.'
+outcomes:
+  - 'Delivered a full specification suite for development handoff across product, architecture, security, and design.'
+  - 'Passed committee review with a security model that removed eligibility disputes through CSV import.'
+  - 'Scoped the system for approximately 200 members with extension potential for future elections and similar alumni networks.'
+  - 'Created a documentation package suitable for either volunteer implementation or contracted delivery.'
+reflection: 'The CSV import pivot was the moment that defined the work. Throwing away the more convenient self-registration approach felt expensive, but convenience was creating a trust gap. In civic tech, legitimacy beats convenience every time.'
+sortOrder: 4
+featured: false
+---
+
+This case study matters because it shows how product decisions can be framed around legitimacy, not just usability.

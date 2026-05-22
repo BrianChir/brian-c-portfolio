@@ -1,0 +1,93 @@
+---
+import '../styles/global.css';
+import { siteMeta } from '../data/site';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import { Font } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title?: string;
+  description?: string;
+  pathname?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title = siteMeta.title,
+  description = siteMeta.description,
+  pathname = '/',
+  ogTitle = siteMeta.ogTitle,
+  ogDescription = siteMeta.ogDescription,
+  noIndex = false,
+} = Astro.props;
+
+const canonical = new URL(pathname, siteMeta.domain).toString();
+---
+
+<!doctype html>
+<html lang="en" class="bg-surface">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#121211" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Brian Chirchir" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={new URL('/og-image.svg', siteMeta.domain).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={new URL('/og-image.svg', siteMeta.domain).toString()} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    <Font cssVariable="--font-display" preload />
+    <Font cssVariable="--font-body" preload />
+    <ClientRouter />
+    <script is:inline defer data-domain="civanta.io" src="https://plausible.io/js/script.js"></script>
+    <title>{title}</title>
+  </head>
+  <body class="bg-surface text-text">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <Nav pathname={pathname} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline define:vars={{ pathname }}>
+      window.plausible = window.plausible || function() {
+        (window.plausible.q = window.plausible.q || []).push(arguments);
+      };
+
+      const sendEvent = (eventName, label) => {
+        if (window.plausible) {
+          window.plausible(eventName, { props: { label } });
+        }
+      };
+
+      sendEvent('page_view', pathname);
+
+      document.addEventListener('click', (event) => {
+        const target = event.target instanceof Element ? event.target.closest('[data-analytics-event]') : null;
+        if (!target) return;
+        const eventName = target.getAttribute('data-analytics-event');
+        const label = target.getAttribute('data-analytics-label') ?? pathname;
+        if (eventName) sendEvent(eventName, label);
+      });
+
+      window.addEventListener('portfolio:track', (event) => {
+        const detail = event.detail ?? {};
+        if (detail.eventName && detail.label) {
+          sendEvent(detail.eventName, detail.label);
+        }
+      });
+    </script>
+  </body>
+</html>

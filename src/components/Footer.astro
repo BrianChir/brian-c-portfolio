@@ -1,0 +1,18 @@
+---
+import { siteMeta } from '../data/site';
+import { analyticsAttributes } from '../lib/analytics';
+---
+
+<footer class="border-t border-border bg-surface">
+  <div class="section-shell flex flex-col gap-4 py-8 text-small text-text-secondary sm:flex-row sm:items-center sm:justify-between">
+    <p class="m-0 font-display text-[13px] text-text-secondary">© 2026 Brian Chirchir.</p>
+    <div class="flex flex-wrap gap-4">
+      <a href={siteMeta.linkedin} class="ui-link cursor-pointer" {...analyticsAttributes('external_link_click', 'footer-linkedin')}>
+        LinkedIn
+      </a>
+      <a href={siteMeta.github} class="ui-link cursor-pointer" {...analyticsAttributes('external_link_click', 'footer-github')}>
+        GitHub
+      </a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://civanta.io/sitemap-index.xml

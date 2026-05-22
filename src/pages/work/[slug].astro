@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyDetail from '../../components/CaseStudyDetail.astro';
+
+const studies = await getCollection('case-studies');
+const study = studies.find((entry) => entry.data.slug === Astro.params.slug);
+
+if (!study) {
+  return Astro.redirect('/work');
+}
+
+const { Content } = await render(study);
+---
+
+<BaseLayout
+  pathname={`/work/${study.data.slug}`}
+  title={`${study.data.title} - Brian Chirchir`}
+  description={study.data.description}
+>
+  <article class="section-shell pt-24 pb-20">
+    <a href="/work" class="ui-link mb-6 inline-block cursor-pointer text-label-sm font-semibold uppercase text-accent">
+      Back to all projects
+    </a>
+    <div class="mb-3 flex flex-wrap items-baseline gap-3">
+      <span class="font-display text-[28px] font-semibold text-accent">{study.data.number}</span>
+      <span class="text-label-sm font-semibold uppercase text-text-secondary">{study.data.phase}</span>
+    </div>
+    <p class="mb-2 text-label-sm font-semibold uppercase text-text-secondary">{study.data.category}</p>
+    <h1 class="mb-3 font-display text-page-title font-medium text-text">{study.data.title}</h1>
+    <p class="mb-2 font-display text-[22px] font-normal text-text-secondary">{study.data.subtitle}</p>
+    <p class="mb-6 max-w-measure text-body text-text-secondary">{study.data.description}</p>
+    <div class="mb-10 flex flex-wrap gap-2">
+      {study.data.tags.map((tag) => (
+        <span class="rounded-md bg-surface-alt px-2.5 py-1 text-label-sm font-medium normal-case text-text-secondary">
+          {tag}
+        </span>
+      ))}
+    </div>
+    <div class="mb-10 prose-shell max-w-measure">
+      <Content />
+    </div>
+    <CaseStudyDetail study={study.data} />
+  </article>
+</BaseLayout>
