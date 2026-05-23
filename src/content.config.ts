@@ -47,6 +47,8 @@ const articles = defineCollection({
 
 const products = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/products' }),
+  // Keep this schema aligned with ProductCard's expected fields.
+  // Astro will fail fast during `npm run check` if a product entry drifts.
   schema: z.object({
     number: z.string(),
     slug: z.string(),
@@ -59,6 +61,7 @@ const products = defineCollection({
     product: z.string(),
     problem: z.string(),
     solution: z.string(),
+    definingDecision: z.string(),
     outcome: z.string(),
     sortOrder: z.number(),
   }),

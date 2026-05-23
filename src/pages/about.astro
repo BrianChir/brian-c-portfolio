@@ -24,9 +24,29 @@ const valuePropositions = [
     detail: "I like the awkward middle ground between a proven methodology and a working product: preserving what makes the method credible while changing what makes it hard to use.",
   },
 ];
+
+const aboutStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  name: 'About Brian Chirchir',
+  description:
+    'Brian Chirchir is a Product Manager, product builder, and ILO-certified trainer based in Nairobi, Kenya.',
+  mainEntity: {
+    '@type': 'Person',
+    name: siteMeta.name,
+    jobTitle: siteMeta.jobTitle,
+    url: siteMeta.domain,
+    sameAs: [siteMeta.linkedin, siteMeta.github],
+  },
+};
 ---
 
-<BaseLayout pathname="/about" title="About - Brian Chirchir" description="How Brian Chirchir thinks about product, the domains he has worked in, and the teams he has built with.">
+<BaseLayout
+  pathname="/about"
+  title="About Brian Chirchir | Product Manager in Nairobi, Kenya"
+  description="Learn about Brian Chirchir, a Nairobi-based Product Manager and product builder with 8+ years across Safaricom/M-PESA, fintech, SaaS, civic tech, and enterprise platforms."
+  structuredData={aboutStructuredData}
+>
   <section class="section-shell pt-24 pb-20">
     <p class="mb-3 text-label font-semibold uppercase text-accent">About</p>
     <div class="mb-12 grid gap-8 md:grid-cols-[minmax(0,1fr)_260px] md:items-start">

@@ -13,6 +13,7 @@ interface Product {
   product: string;
   problem: string;
   solution: string;
+  definingDecision: string;
   outcome: string;
 }
 
@@ -21,7 +22,7 @@ interface Props {
 }
 
 const { product } = Astro.props;
-const artifactItems = product.artifact.split(/\s*·\s*/);
+const artifactItems = product.artifact.split(/\s*(?:·|\|)\s*/);
 const statusTone = product.status.toLowerCase().includes('live')
   ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-200'
   : product.status.toLowerCase().includes('development')
@@ -94,6 +95,11 @@ const statusTone = product.status.toLowerCase().includes('live')
           <section class="bg-surface-card p-5">
             <h3 class="mb-3 font-display text-subsection font-medium text-text">Solution</h3>
             <p class="m-0 max-w-measure text-body-sm text-text-secondary">{product.solution}</p>
+            {/* Keep the tradeoff visible instead of burying it inside the solution paragraph. */}
+            <aside class="mt-4 rounded-md border border-accent/30 bg-accent/10 p-4">
+              <p class="mb-2 text-label-sm font-semibold uppercase text-accent">Defining decision</p>
+              <p class="m-0 max-w-measure text-body-xs text-text-secondary">{product.definingDecision}</p>
+            </aside>
           </section>
           <section class="bg-surface-card p-5 sm:col-span-2">
             <h3 class="mb-3 font-display text-subsection font-medium text-text">Outcome</h3>

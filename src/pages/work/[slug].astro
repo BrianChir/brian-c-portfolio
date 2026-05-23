@@ -11,12 +11,26 @@ if (!study) {
 }
 
 const { Content } = await render(study);
+const caseStudyStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: `${study.data.title} - Brian Chirchir Product Case Study`,
+  description: study.data.description,
+  about: study.data.tags,
+  url: new URL(`/work/${study.data.slug}`, Astro.site ?? 'https://civanta.io').toString(),
+  author: {
+    '@type': 'Person',
+    name: 'Brian Chirchir',
+    jobTitle: 'Product Manager',
+  },
+};
 ---
 
 <BaseLayout
   pathname={`/work/${study.data.slug}`}
-  title={`${study.data.title} - Brian Chirchir`}
+  title={`${study.data.title} | Product Manager Case Study - Brian Chirchir`}
   description={study.data.description}
+  structuredData={caseStudyStructuredData}
 >
   <article class="section-shell pt-24 pb-20">
     <a href="/work" class="ui-link mb-6 inline-block cursor-pointer text-label-sm font-semibold uppercase text-accent">

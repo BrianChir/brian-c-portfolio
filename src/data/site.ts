@@ -1,14 +1,32 @@
 export const siteMeta = {
-  title: 'Brian Chirchir - Product Builder | Fintech · Civic Tech · Enterprise',
+  name: 'Brian Chirchir',
+  title: 'Brian Chirchir | Product Manager for Fintech, Civic Tech, SaaS & AI',
   description:
-    'Product Manager and Builder working across fintech, civic tech, and enterprise platforms in East Africa. Case studies, product thinking, and an invitation to build together.',
-  ogTitle: 'Brian Chirchir - Product Builder',
+    'Brian Chirchir is a Nairobi-based Product Manager and product builder with 8+ years across fintech, M-PESA, civic tech, SaaS, AI, edtech, and enterprise platforms.',
+  ogTitle: 'Brian Chirchir | Product Manager & Product Builder',
   ogDescription:
-    'I build products that close the gap between technology and the people it should serve. Explore case studies from fintech, civic tech, and enterprise platforms in East Africa.',
+    'Hire or discover Brian Chirchir, a Product Manager who builds fintech, civic tech, SaaS, AI, and enterprise products for emerging markets.',
+  keywords: [
+    'Brian Chirchir',
+    'Brian Chirchir Product Manager',
+    'Product Manager Kenya',
+    'Product Manager Nairobi',
+    'Fintech Product Manager',
+    'SaaS Product Manager',
+    'AI Product Manager',
+    'Civic Tech Product Manager',
+    'M-PESA product manager',
+    'Product builder East Africa',
+    'Product strategy',
+    'User research',
+    'Product owner',
+  ],
   email: 'chirchir.brian@yahoo.com',
   linkedin: 'https://www.linkedin.com/in/brian-chirchir/',
   github: 'https://github.com/BrianChir',
   domain: 'https://civanta.io',
+  location: 'Nairobi, Kenya',
+  jobTitle: 'Product Manager',
 };
 
 export const navItems = [

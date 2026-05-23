@@ -10,12 +10,26 @@ if (!article || article.data.status !== 'published') {
 }
 
 const { Content } = await render(article);
+const articleStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.data.title,
+  description: article.data.abstract,
+  datePublished: article.data.publishedDate?.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Brian Chirchir',
+    jobTitle: 'Product Manager',
+  },
+  url: new URL(`/thinking/${article.data.slug}`, Astro.site ?? 'https://civanta.io').toString(),
+};
 ---
 
 <BaseLayout
   pathname={`/thinking/${article.data.slug}`}
-  title={`${article.data.title} - Brian Chirchir`}
+  title={`${article.data.title} | Product Thinking - Brian Chirchir`}
   description={article.data.abstract}
+  structuredData={articleStructuredData}
 >
   <article class="section-shell pt-24 pb-20">
     <a href="/thinking" class="ui-link mb-6 inline-block cursor-pointer text-label-sm font-semibold uppercase text-accent">

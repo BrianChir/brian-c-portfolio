@@ -3,10 +3,32 @@ export const prerender = true;
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
-import { products } from '../data/products';
+import { getProducts } from '../lib/products';
+import { getCollection } from 'astro:content';
+
+const products = await getProducts();
+const caseStudies = (await getCollection('case-studies')).sort((a, b) => a.data.sortOrder - b.data.sortOrder);
+const workStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Brian Chirchir Product Manager Portfolio',
+  description:
+    'Product management portfolio covering fintech, M-PESA, civic tech, SaaS, AI, edtech, PAYGO solar, and entrepreneurship products.',
+  hasPart: products.map((product) => ({
+    '@type': 'CreativeWork',
+    name: product.name,
+    description: product.product,
+    url: new URL(`/work#${product.slug}`, Astro.site ?? 'https://civanta.io').toString(),
+  })),
+};
 ---
 
-<BaseLayout pathname="/work" title="Products - Brian Chirchir" description="Products Brian Chirchir has built, shaped, or specified across fintech, clean energy, civic tech, AI, and entrepreneurship training.">
+<BaseLayout
+  pathname="/work"
+  title="Product Manager Portfolio - Brian Chirchir | Fintech, SaaS, AI & Civic Tech"
+  description="Explore Brian Chirchir's product management portfolio across fintech, M-PESA, PAYGO solar, civic tech, SaaS, AI, edtech, and entrepreneurship training."
+  structuredData={workStructuredData}
+>
   <section class="section-shell pt-24 pb-20">
     <p class="mb-3 text-label font-semibold uppercase text-accent">Products</p>
     <h1 class="mb-3 font-display text-page-title font-normal text-text">Built around real constraints.</h1>
@@ -14,5 +36,19 @@ import { products } from '../data/products';
       A focused view of products I have built, managed, or specified across fintech, clean energy, civic tech, AI, and entrepreneurship training. Each product is framed by the problem it answers, the solution approach, and the outcome it created or is designed to create.
     </p>
     {products.map((product) => <ProductCard product={product} />)}
+
+    <section class="mt-12 border-t border-border pt-10">
+      <p class="mb-3 text-label-sm font-semibold uppercase text-text-secondary">Product manager case studies</p>
+      <h2 class="mb-6 font-display text-section-title font-normal text-text">Deeper stories from shipped product work.</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        {caseStudies.map((study) => (
+          <a href={`/work/${study.data.slug}`} class="surface-hover block rounded-lg border border-border bg-surface-card p-5 hover:border-accent hover:bg-surface-alt">
+            <p class="mb-3 text-label-sm font-semibold uppercase text-accent">{study.data.category}</p>
+            <h3 class="mb-3 font-display text-case-title font-medium text-text">{study.data.title}</h3>
+            <p class="m-0 text-body-sm text-text-secondary">{study.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
   </section>
 </BaseLayout>

@@ -13,6 +13,7 @@ interface Props {
   ogTitle?: string;
   ogDescription?: string;
   noIndex?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -22,9 +23,56 @@ const {
   ogTitle = siteMeta.ogTitle,
   ogDescription = siteMeta.ogDescription,
   noIndex = false,
+  structuredData,
 } = Astro.props;
 
 const canonical = new URL(pathname, siteMeta.domain).toString();
+const profileUrl = new URL('/about', siteMeta.domain).toString();
+const defaultStructuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${profileUrl}#person`,
+    name: siteMeta.name,
+    url: siteMeta.domain,
+    image: new URL('/brian.png', siteMeta.domain).toString(),
+    jobTitle: siteMeta.jobTitle,
+    email: `mailto:${siteMeta.email}`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Nairobi',
+      addressCountry: 'KE',
+    },
+    sameAs: [siteMeta.linkedin, siteMeta.github],
+    knowsAbout: [
+      'Product Management',
+      'Product Strategy',
+      'User Research',
+      'Fintech',
+      'M-PESA',
+      'SaaS',
+      'AI Products',
+      'Civic Technology',
+      'EdTech',
+      'Emerging Markets',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteMeta.domain}#website`,
+    name: `${siteMeta.name} Product Manager Portfolio`,
+    url: siteMeta.domain,
+    description: siteMeta.description,
+    publisher: { '@id': `${profileUrl}#person` },
+  },
+];
+const pageStructuredData = Array.isArray(structuredData)
+  ? structuredData
+  : structuredData
+    ? [structuredData]
+    : [];
+const jsonLd = JSON.stringify([...defaultStructuredData, ...pageStructuredData]);
 ---
 
 <!doctype html>
@@ -34,11 +82,16 @@ const canonical = new URL(pathname, siteMeta.domain).toString();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="author" content={siteMeta.name} />
+    <meta name="keywords" content={siteMeta.keywords.join(', ')} />
     <meta name="theme-color" content="#121211" />
     <link rel="canonical" href={canonical} />
+    <link rel="me" href={siteMeta.linkedin} />
+    <link rel="me" href={siteMeta.github} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Brian Chirchir" />
+    <meta property="og:locale" content="en_KE" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
@@ -48,6 +101,8 @@ const canonical = new URL(pathname, siteMeta.domain).toString();
     <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content={new URL('/og-image.svg', siteMeta.domain).toString()} />
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    {!noIndex && <meta name="robots" content="index, follow, max-image-preview:large" />}
+    <script is:inline type="application/ld+json" set:html={jsonLd} />
     <Font cssVariable="--font-display" preload />
     <Font cssVariable="--font-body" preload />
     <ClientRouter />

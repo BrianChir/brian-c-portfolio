@@ -9,16 +9,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteMeta } from '../data/site';
 import { analyticsAttributes } from '../lib/analytics';
 import { heroInfo, stats } from '../data/home';
-import { products } from '../data/products';
+import { getProducts } from '../lib/products';
 
 const thinkingTopics = [
   'M-PESA UX teardown',
   'Low-bandwidth product design',
   'Trust architecture in civic tech',
 ];
+
+const products = await getProducts();
 ---
 
-<BaseLayout pathname="/" title="Brian Chirchir - Product Builder | Fintech · Civic Tech · Enterprise">
+<BaseLayout
+  pathname="/"
+  title="Brian Chirchir | Product Manager for Fintech, SaaS, AI & Civic Tech"
+  description="Brian Chirchir is a Product Manager in Nairobi building fintech, M-PESA, SaaS, AI, civic tech, and edtech products across East Africa and global remote teams."
+>
   <Hero>
     <InfoGrid items={heroInfo} />
   </Hero>
