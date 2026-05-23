@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://civanta.io',
+  site: 'http://brianchirchir.tech',
   output: 'server',
   adapter: vercel(),
   integrations: [mdx(), react()],
