@@ -18,7 +18,7 @@ const workStructuredData = {
     '@type': 'CreativeWork',
     name: product.name,
     description: product.product,
-    url: new URL(`/work#${product.slug}`, Astro.site ?? 'http://brianchirchir.tech').toString(),
+    url: new URL(`/work#${product.slug}`, Astro.site ?? 'https://www.brianchirchir.tech').toString(),
   })),
 };
 ---

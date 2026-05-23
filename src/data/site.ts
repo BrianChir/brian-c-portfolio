@@ -24,7 +24,7 @@ export const siteMeta = {
   email: 'chirchir.brian@yahoo.com',
   linkedin: 'https://www.linkedin.com/in/brian-chirchir/',
   github: 'https://github.com/BrianChir',
-  domain: 'http://brianchirchir.tech',
+  domain: 'https://www.brianchirchir.tech',
   location: 'Nairobi, Kenya',
   jobTitle: 'Product Manager',
 };
