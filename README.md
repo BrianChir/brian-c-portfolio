@@ -4,7 +4,7 @@ Personal product-builder portfolio for Brian Chirchir, designed as a content-fir
 
 ## Live Site
 
-Canonical domain: `https://civanta.io`
+Canonical domain: `https://www.brianchirchir.tech/`
 
 ## Stack
 
