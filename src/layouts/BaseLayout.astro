@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
 import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title?: string;
@@ -106,6 +107,7 @@ const jsonLd = JSON.stringify([...defaultStructuredData, ...pageStructuredData])
     <Font cssVariable="--font-display" preload />
     <Font cssVariable="--font-body" preload />
     <ClientRouter />
+    <Analytics />
     <script is:inline defer data-domain="brianchirchir.tech" src="https://plausible.io/js/script.js"></script>
     <title>{title}</title>
   </head>

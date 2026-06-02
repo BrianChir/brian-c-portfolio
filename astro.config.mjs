@@ -7,7 +7,11 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: 'https://www.brianchirchir.tech',
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   integrations: [mdx(), react()],
   fonts: [
     {
