@@ -1,0 +1,99 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { analyticsAttributes } from '../lib/analytics';
+
+const competencies = [
+  {
+    title: 'End-to-End Product Ownership',
+    claim:
+      'Managed the full product lifecycle across seven products in fintech, civic tech, SaaS, AI, clean energy, and entrepreneurship training.',
+    evidence:
+      'At 4RDigital, led DayLipa and Duka+ from discovery through live deployment, aligning engineering, field teams, Davis & Shirtliff, Unilever, FCDO, EY, PREO, and TRANSFORM stakeholders.',
+    proof: '7 products; 51-retailer Duka+ pilot; 500+ DayLipa devices under remote management.',
+    href: '/work',
+  },
+  {
+    title: 'M-PESA and Payment Systems Architecture',
+    claim:
+      'Designs payment products where reconciliation, delayed callbacks, user trust, and operational recovery are treated as product decisions.',
+    evidence:
+      'For DayLipa PAYGO, shaped an idempotent M-PESA C2B reconciliation flow and chose eventual consistency over fragile real-time activation to prevent wrongful solar pump locks.',
+    proof: '500+ PAYGO devices managed; expansion roadmap across East Africa.',
+    href: '/work/daylipa-paygo',
+  },
+  {
+    title: 'Human-Centred Discovery',
+    claim:
+      'Turns field knowledge into product decisions through interviews, co-design, constraint mapping, and synthesis that teams can act on.',
+    evidence:
+      'For the BDS Mentorship Platform, translated ILO SIYB trainer workflows into a mentoring product model with structured UAT and handoff documentation.',
+    proof: '107-test-case UAT runbook and a complete trainer/trainee workflow specification.',
+    href: '/work#bds-mentorship-platform',
+  },
+  {
+    title: 'Technical Product Specification',
+    claim:
+      'Writes PRDs, user stories, acceptance criteria, and runbooks that give engineering teams clarity without flattening product nuance.',
+    evidence:
+      'Specified products across WealthTrack, BizFramer, YodaAI, civic voting, PAYGO solar, and mentorship workflows, connecting business requirements to delivery detail.',
+    proof: 'Five deeper case studies plus seven product entries documented on the portfolio.',
+    href: '/work',
+  },
+  {
+    title: 'AI Product Strategy',
+    claim:
+      'Applies AI where it improves workflow quality and decision support, while keeping rules, trust, and measurement visible.',
+    evidence:
+      'WealthTrack combines AI-assisted transaction categorisation with practical personal finance workflows; YodaAI and BizFramer apply AI to training and business support contexts.',
+    proof: '94% transaction categorisation accuracy target documented in WealthTrack product evidence.',
+    href: '/work#wealthtrack-ai',
+  },
+  {
+    title: 'Cross-Functional Stakeholder Management',
+    claim:
+      'Keeps complex delivery moving across funders, enterprises, field teams, engineers, and senior leaders.',
+    evidence:
+      'Managed products and research programmes involving Safaricom, GeoPoll, 4RDigital, EBS Solutions, Davis & Shirtliff, and Commonwealth-linked 33-country research work.',
+    proof: '30+ countries across research, delivery, and partnerships; 1M+ users impacted.',
+    href: '/about',
+  },
+];
+---
+
+<BaseLayout
+  pathname="/competencies"
+  title="Competencies | Brian Chirchir - Senior Product Manager"
+  description="Evidence-backed product management competencies across product ownership, M-PESA integrations, discovery, technical specification, AI strategy, and stakeholder management."
+>
+  <section class="section-shell pt-24 pb-12">
+    <p class="mb-3 text-label font-semibold uppercase text-accent">Competencies</p>
+    <h1 class="mb-5 font-display text-page-title font-normal text-text">Verified product judgement, not a keyword list.</h1>
+    <p class="max-w-measure text-body text-text-secondary">
+      These are the capabilities that show up repeatedly across my work: each claim is connected to a named product, delivery context, or measurable outcome elsewhere on the site.
+    </p>
+  </section>
+
+  <section class="wide-shell pb-16">
+    <div class="grid gap-4 md:grid-cols-2">
+      {competencies.map((competency) => (
+        <article class="rounded-lg border border-border bg-surface-card p-6">
+          <h2 class="mb-3 font-display text-case-title font-medium text-text">{competency.title}</h2>
+          <p class="mb-3 text-body-sm text-text-secondary">{competency.claim}</p>
+          <p class="mb-4 text-body-sm text-text-secondary">{competency.evidence}</p>
+          <p class="mb-5 rounded border border-border bg-surface-alt px-4 py-3 text-body-xs font-semibold text-text">
+            {competency.proof}
+          </p>
+          <a
+            href={competency.href}
+            class="ui-link inline-flex min-h-12 cursor-pointer items-center text-body-sm font-semibold text-accent"
+            {...analyticsAttributes('cta_click', `competency-${competency.title}`)}
+          >
+            See evidence
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

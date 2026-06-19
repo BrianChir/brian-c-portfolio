@@ -1,0 +1,100 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteMeta } from '../data/site';
+import { analyticsAttributes } from '../lib/analytics';
+
+const services = [
+  {
+    title: 'Product Management Consulting',
+    timeframe: '2-8 week discovery or delivery sprint',
+    body:
+      'End-to-end product ownership for teams building in fintech, civic tech, SaaS, edtech, and emerging-market infrastructure. I help frame the problem, align stakeholders, define the delivery path, and keep execution connected to real user constraints.',
+  },
+  {
+    title: 'Fintech Service and Payment Systems Product Strategy',
+    timeframe: '1-4 week architecture and product review',
+    body:
+      'Integration design, reconciliation logic, payment journey review, and product strategy for teams building around fintech services or adjacent mobile money ecosystems. Useful when trust, idempotency, delayed callbacks, and field realities matter as much as the happy path.',
+  },
+  {
+    title: 'Product Discovery and User Research',
+    timeframe: '2-6 week research engagement',
+    body:
+      'Human-centred discovery for low-bandwidth, infrastructure-constrained, or high-trust environments. I run constraint mapping, user interviews, field synthesis, and decision-ready product recommendations.',
+  },
+  {
+    title: 'Technical Product Specification',
+    timeframe: '1-3 week specification package',
+    body:
+      'PRDs, user stories, acceptance criteria, UAT runbooks, and development handoff documentation for organisations that need senior product thinking before or alongside engineering delivery.',
+  },
+  {
+    title: 'AI Product Strategy',
+    timeframe: '2-5 week scoping sprint',
+    body:
+      'Practical AI product scoping grounded in delivery experience from WealthTrack, YodaAI, and BizFramer. I help teams identify where AI creates usable leverage, where rules still matter, and what needs to be measured before launch.',
+  },
+];
+---
+
+<BaseLayout
+  pathname="/services"
+  title="Services | Brian Chirchir - Senior Product Manager"
+  description="Product management consulting, fintech service strategy, user research, technical product specification, and AI product strategy services from Brian Chirchir."
+>
+  <section class="section-shell pt-24 pb-12">
+    <p class="mb-3 text-label font-semibold uppercase text-accent">Services</p>
+    <h1 class="mb-5 font-display text-page-title font-normal text-text">Product leadership for teams building under real constraints.</h1>
+    <p class="max-w-measure text-body text-text-secondary">
+      I work with organisations that need senior product thinking without adding ceremony for its own sake: discovery, strategy, specifications, stakeholder alignment, and delivery oversight for products where trust, infrastructure, and adoption decide the outcome.
+    </p>
+  </section>
+
+  <section class="wide-shell pb-16">
+    <div class="grid gap-4 md:grid-cols-2">
+      {services.map((service) => (
+        <article class="rounded-lg border border-border bg-surface-card p-6">
+          <p class="mb-3 text-label-sm font-semibold uppercase text-accent">{service.timeframe}</p>
+          <h2 class="mb-3 font-display text-case-title font-medium text-text">{service.title}</h2>
+          <p class="mb-5 text-body-sm text-text-secondary">{service.body}</p>
+          <a
+            href={`${siteMeta.bookingUrl}&body=I%20would%20like%20to%20discuss%20${encodeURIComponent(service.title)}.`}
+            class="ui-link inline-flex min-h-12 cursor-pointer items-center text-body-sm font-semibold text-accent"
+            {...analyticsAttributes('cta_click', `service-${service.title}`)}
+          >
+            Discuss this service
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-surface-alt py-14">
+    <div class="section-shell text-center">
+      <p class="mb-3 text-label font-semibold uppercase text-text-secondary">Engagements</p>
+      <h2 class="text-balance mb-5 font-display text-section-title font-normal text-text">Useful when the work is too important to stay vague.</h2>
+      <p class="mx-auto mb-8 max-w-measure text-body text-text-secondary">
+        The best fit is a team with a real product problem, a complex operating environment, and a need for clear product judgement across business, users, and engineering.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href={siteMeta.bookingUrl}
+          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded bg-accent px-6 py-3 text-[13px] font-semibold text-surface transition-colors duration-200 hover:bg-text"
+          {...analyticsAttributes('cta_click', 'services-booking')}
+        >
+          Start a conversation
+        </a>
+        <a
+          href={siteMeta.cvRequestUrl}
+          download
+          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-card px-6 py-3 text-[13px] font-semibold text-text transition-colors duration-200 hover:border-accent"
+          {...analyticsAttributes('cta_click', 'services-cv')}
+        >
+          Download CV
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -7,6 +7,12 @@ import { analyticsAttributes } from '../lib/analytics';
   <div class="section-shell flex flex-col gap-4 py-8 text-small text-text-secondary sm:flex-row sm:items-center sm:justify-between">
     <p class="m-0 font-display text-[13px] text-text-secondary">© 2026 Brian Chirchir.</p>
     <div class="flex flex-wrap gap-4">
+      <a href={siteMeta.bookingUrl} class="ui-link cursor-pointer" {...analyticsAttributes('cta_click', 'footer-booking')}>
+        Start a conversation
+      </a>
+      <a href={siteMeta.cvRequestUrl} download class="ui-link cursor-pointer" {...analyticsAttributes('cta_click', 'footer-cv-request')}>
+        Download CV
+      </a>
       <a href={siteMeta.linkedin} class="ui-link cursor-pointer" {...analyticsAttributes('external_link_click', 'footer-linkedin')}>
         LinkedIn
       </a>

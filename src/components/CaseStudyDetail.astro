@@ -24,22 +24,22 @@ const { study } = Astro.props;
 <div class="space-y-10">
   <div class="grid gap-6 md:grid-cols-2 md:gap-x-10">
     <section>
-      <h3 class="mb-3 font-display text-subsection font-medium text-text">The problem</h3>
+      <h3 class="mb-3 font-display text-subsection font-medium text-text">Challenge</h3>
       <p class="m-0 text-body-sm text-text-secondary">{study.problem}</p>
     </section>
     <section>
-      <h3 class="mb-3 font-display text-subsection font-medium text-text">The user</h3>
+      <h3 class="mb-3 font-display text-subsection font-medium text-text">Context</h3>
       <p class="m-0 text-body-sm text-text-secondary">{study.user}</p>
     </section>
   </div>
 
   <section>
-    <h3 class="mb-4 font-display text-subsection font-medium text-text">Constraints</h3>
+    <h3 class="mb-4 font-display text-subsection font-medium text-text">Operating constraints</h3>
     <div class="grid gap-4 md:grid-cols-2">
       {study.constraints.map((constraint) => (
         <div class="rounded-md bg-surface-alt px-4 py-3">
           <p class="m-0 text-body-xs text-text-secondary">
-            <span class="mr-2 text-accent">→</span>{constraint}
+            <span class="mr-2 text-accent">-&gt;</span>{constraint}
           </p>
         </div>
       ))}
@@ -47,7 +47,7 @@ const { study } = Astro.props;
   </section>
 
   <section>
-    <h3 class="mb-4 font-display text-subsection font-medium text-text">Key decisions</h3>
+    <h3 class="mb-4 font-display text-subsection font-medium text-text">Strategic approach</h3>
     <div class="space-y-4">
       {study.decisions.map((decision, index) => (
         <div class="border-t border-border pt-4 first:border-t-0 first:pt-0">
@@ -69,11 +69,11 @@ const { study } = Astro.props;
       <p class="m-0 text-body-sm text-text-secondary">{study.role}</p>
     </section>
     <section>
-      <h3 class="mb-3 font-display text-subsection font-medium text-text">Outcomes</h3>
+      <h3 class="mb-3 font-display text-subsection font-medium text-text">Results and impact</h3>
       <ul class="m-0 space-y-2 pl-0">
         {study.outcomes.map((outcome) => (
           <li class="list-none text-body-sm text-text-secondary">
-            <span class="mr-2 text-accent">✦</span>{outcome}
+            <span class="mr-2 text-accent">*</span>{outcome}
           </li>
         ))}
       </ul>

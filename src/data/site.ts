@@ -1,11 +1,11 @@
 export const siteMeta = {
   name: 'Brian Chirchir',
-  title: 'Brian Chirchir | Product Manager for Fintech, Civic Tech, SaaS & AI',
+  title: 'Brian Chirchir | Senior Product Manager for Fintech, Civic Tech, SaaS & AI',
   description:
-    'Brian Chirchir is a Nairobi-based Product Manager and product builder with 8+ years across fintech, M-PESA, civic tech, SaaS, AI, edtech, and enterprise platforms.',
-  ogTitle: 'Brian Chirchir | Product Manager & Product Builder',
+    'Brian Chirchir is a Nairobi-based Senior Product Manager and product builder with 8+ years, 1M+ users impacted, and work across fintech, M-PESA, civic tech, SaaS, AI, edtech, and enterprise platforms.',
+  ogTitle: 'Brian Chirchir | Senior Product Manager & Product Builder',
   ogDescription:
-    'Hire or discover Brian Chirchir, a Product Manager who builds fintech, civic tech, SaaS, AI, and enterprise products for emerging markets.',
+    'Hire or discover Brian Chirchir, a Senior Product Manager who builds fintech, civic tech, SaaS, AI, and enterprise products for emerging markets.',
   keywords: [
     'Brian Chirchir',
     'Brian Chirchir Product Manager',
@@ -24,14 +24,19 @@ export const siteMeta = {
   email: 'chirchir.brian@yahoo.com',
   linkedin: 'https://www.linkedin.com/in/brian-chirchir/',
   github: 'https://github.com/BrianChir',
+  cvRequestUrl: '/Brian-Chirchir-CV.pdf',
+  bookingUrl:
+    'mailto:chirchir.brian@yahoo.com?subject=Product%20conversation%20with%20Brian%20Chirchir',
   domain: 'https://www.brianchirchir.tech',
   location: 'Nairobi, Kenya',
-  jobTitle: 'Product Manager',
+  jobTitle: 'Senior Product Manager',
 };
 
 export const navItems = [
   { href: '/', label: 'Home' },
   { href: '/work', label: 'Products' },
+  { href: '/services', label: 'Services' },
+  { href: '/competencies', label: 'Competencies' },
   { href: '/thinking', label: 'Thinking' },
   { href: '/about', label: 'About' },
 ];

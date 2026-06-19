@@ -1,7 +1,7 @@
 export const heroInfo = [
   {
     label: 'What I do',
-    value: 'Product strategy, user research, specifications, cross-functional delivery, M-PESA integrations',
+    value: 'Senior product strategy, discovery, specifications, cross-functional delivery, M-PESA integrations',
   },
   {
     label: 'Where I thrive',
@@ -22,4 +22,17 @@ export const stats = [
   { number: '8+', label: 'years building products across fintech, civic tech, and enterprise' },
   { number: '1M+', label: 'users directly impacted through platforms, services, and field programs' },
   { number: '30+', label: 'countries worked across through research, delivery, and partnerships' },
+];
+
+export const trustedOrganizations = [
+  'Safaricom',
+  'M-PESA',
+  'Unilever',
+  'FCDO',
+  'EY',
+  'Davis & Shirtliff',
+  'PREO',
+  'TRANSFORM',
+  'CMU-Africa',
+  'ILO SIYB',
 ];

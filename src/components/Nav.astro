@@ -20,7 +20,7 @@ const { pathname } = Astro.props;
       BC<span class="text-accent">.</span>
     </a>
 
-    <div class="hidden items-center gap-5 sm:flex">
+    <div class="hidden items-center gap-5 lg:flex">
       {navItems.map((item) => {
         const active = pathname === item.href;
         return (
@@ -47,7 +47,7 @@ const { pathname } = Astro.props;
         Let's talk
       </a>
 
-      <details class="sm:hidden">
+      <details class="lg:hidden">
         <summary class="surface-hover flex min-h-12 min-w-12 cursor-pointer list-none items-center justify-center rounded border border-border bg-surface-card text-text transition-colors duration-200 hover:border-accent">
           <span class="sr-only">Open navigation menu</span>
           <span class="block h-[2px] w-4 bg-current shadow-[0_5px_0_0_currentColor,0_-5px_0_0_currentColor]"></span>

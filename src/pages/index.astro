@@ -8,28 +8,40 @@ import StatsRow from '../components/StatsRow.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteMeta } from '../data/site';
 import { analyticsAttributes } from '../lib/analytics';
-import { heroInfo, stats } from '../data/home';
+import { heroInfo, stats, trustedOrganizations } from '../data/home';
 import { getProducts } from '../lib/products';
-
-const thinkingTopics = [
-  'M-PESA UX teardown',
-  'Low-bandwidth product design',
-  'Trust architecture in civic tech',
-];
+import { getCollection } from 'astro:content';
 
 const products = await getProducts();
+const articles = (await getCollection('articles'))
+  .filter((article) => article.data.status === 'published')
+  .sort((a, b) => a.data.sortOrder - b.data.sortOrder)
+  .slice(0, 3);
 ---
 
 <BaseLayout
   pathname="/"
-  title="Brian Chirchir | Product Manager for Fintech, SaaS, AI & Civic Tech"
-  description="Brian Chirchir is a Product Manager in Nairobi building fintech, M-PESA, SaaS, AI, civic tech, and edtech products across East Africa and global remote teams."
+  title="Brian Chirchir | Senior Product Manager for Fintech, SaaS, AI & Civic Tech"
+  description="Brian Chirchir is a Senior Product Manager in Nairobi building fintech, M-PESA, SaaS, AI, civic tech, and edtech products across East Africa and global remote teams."
 >
   <Hero>
     <InfoGrid items={heroInfo} />
   </Hero>
 
   <StatsRow items={stats} />
+
+  <section class="border-y border-border bg-surface-alt py-8">
+    <div class="wide-shell">
+      <p class="mb-4 text-label-sm font-semibold uppercase text-text-secondary">Built for and alongside</p>
+      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+        {trustedOrganizations.map((organization) => (
+          <div class="flex min-h-14 items-center justify-center rounded border border-border bg-surface-card px-3 py-2 text-center text-[13px] font-semibold text-text-secondary">
+            {organization}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <section class="wide-shell py-12">
     <p class="mb-3 text-label font-semibold uppercase text-text-secondary">Products</p>
@@ -55,7 +67,7 @@ const products = await getProducts();
         <div class="max-w-measure">
           <h2 class="mb-4 font-display text-section-title font-normal text-text">Lessons worth sharing.</h2>
           <p class="mb-5 text-body text-text-secondary">
-            I am writing up lessons from 8+ years of building in fintech, civic tech, clean energy, and entrepreneurship training. First piece in progress.
+            Essays and frameworks from 8+ years of building in fintech, civic tech, clean energy, and entrepreneurship training.
           </p>
           <div class="flex flex-wrap gap-3">
             <a
@@ -63,25 +75,21 @@ const products = await getProducts();
               class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-card px-5 py-3 text-[13px] font-semibold text-text hover:border-accent"
               {...analyticsAttributes('cta_click', 'home-thinking')}
             >
-              See what's coming
-            </a>
-            <a
-              href={`mailto:${siteMeta.email}?subject=Notify%20me%20when%20your%20first%20essay%20is%20published`}
-              class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded bg-accent px-5 py-3 text-[13px] font-semibold text-surface hover:bg-text"
-              {...analyticsAttributes('cta_click', 'home-thinking-notify')}
-            >
-              Notify me
+              Read the thinking
             </a>
           </div>
         </div>
         <div class="rounded-lg border border-border bg-surface-card p-4">
-          <p class="mb-3 text-label-sm font-semibold uppercase text-text-secondary">Draft queue</p>
+          <p class="mb-3 text-label-sm font-semibold uppercase text-text-secondary">Published</p>
           <div class="space-y-2">
-            {thinkingTopics.map((topic) => (
-              <p class="m-0 flex items-center justify-between gap-3 rounded border border-border bg-surface-alt px-3 py-2 text-body-xs text-text-secondary">
-                <span>{topic}</span>
-                <span class="text-accent">Coming</span>
-              </p>
+            {articles.map((article) => (
+              <a
+                href={`/thinking/${article.data.slug}`}
+                class="surface-hover block rounded border border-border bg-surface-alt px-3 py-2 text-body-xs text-text-secondary hover:border-accent"
+                {...analyticsAttributes('cta_click', `home-article-${article.data.slug}`)}
+              >
+                {article.data.title}
+              </a>
             ))}
           </div>
         </div>
@@ -98,13 +106,22 @@ const products = await getProducts();
       <p class="mx-auto mb-8 max-w-[520px] text-body text-text-secondary">
         I bring 8+ years of building across M-PESA, IoT, SaaS, and civic tech in markets where constraints are real, trust is earned, and there's no room for features that don't solve problems. If you're looking for a product person who can move from whiteboard to shipped code and take your team along, I'd like to hear what you're working on.
       </p>
-      <a
-        href={`mailto:${siteMeta.email}`}
-        class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded bg-accent px-6 py-3 text-[13px] font-semibold text-surface transition-colors duration-200 hover:bg-text"
-        {...analyticsAttributes('cta_click', 'home-value-prop-email')}
-      >
-        Start a conversation
-      </a>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href="/services"
+          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded bg-accent px-6 py-3 text-[13px] font-semibold text-surface transition-colors duration-200 hover:bg-text"
+          {...analyticsAttributes('cta_click', 'home-services')}
+        >
+          Explore services
+        </a>
+        <a
+          href={siteMeta.bookingUrl}
+          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-card px-6 py-3 text-[13px] font-semibold text-text transition-colors duration-200 hover:border-accent"
+          {...analyticsAttributes('cta_click', 'home-value-prop-email')}
+        >
+          Start a conversation
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>
