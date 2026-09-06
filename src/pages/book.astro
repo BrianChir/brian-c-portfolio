@@ -1,0 +1,38 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  pathname="/book"
+  title="Book a call with Brian Chirchir"
+  description="Schedule a 30-minute conversation with Brian Chirchir about product roles, contract work, or collaboration."
+>
+  <section class="section-shell page-stack">
+    <p class="eyebrow mb-3">Schedule a conversation</p>
+    <h1 class="mb-4 font-display text-page-title font-normal">Pick a time that works for you.</h1>
+    <p class="mb-8 max-w-[620px] text-[14px] leading-7 text-text-secondary">
+      Choose any available 30-minute slot below. Calendly will handle the time-zone conversion automatically.
+    </p>
+
+    <div
+      class="calendly-inline-widget min-w-[320px] overflow-hidden rounded-md border border-border bg-white"
+      data-url="https://calendly.com/bikeit/30min?hide_gdpr_banner=1"
+      style="height: 700px;"
+      aria-label="Calendly appointment scheduler"
+    ></div>
+    <noscript>
+      <p class="mt-5 text-[13px] text-text-secondary">
+        JavaScript is required for the embedded calendar. You can
+        <a class="ui-link text-accent" href="https://calendly.com/bikeit/30min">schedule directly on Calendly</a>.
+      </p>
+    </noscript>
+  </section>
+
+  <script
+    is:inline
+    async
+    src="https://assets.calendly.com/assets/external/widget.js"
+  ></script>
+</BaseLayout>

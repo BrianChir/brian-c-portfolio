@@ -1,0 +1,54 @@
+---
+interface Thumbnail {
+  label: string;
+  alt: string;
+  from: string;
+  via: string;
+  to: string;
+}
+
+interface Props {
+  thumbnail: Thumbnail;
+  number: string;
+  class?: string;
+}
+
+const { thumbnail, number, class: className = '' } = Astro.props;
+const titleId = `project-thumbnail-${`${number}-${thumbnail.label}`.replace(/\W+/g, '-').toLowerCase()}`;
+const style = `--thumb-from: ${thumbnail.from}; --thumb-via: ${thumbnail.via}; --thumb-to: ${thumbnail.to}; --thumb-bg: linear-gradient(135deg, ${thumbnail.from}, ${thumbnail.via} 52%, ${thumbnail.to});`;
+---
+
+<figure class:list={['project-thumbnail tech-frame glass-panel relative aspect-[16/10] overflow-hidden rounded-lg', className]} style={style}>
+  <svg viewBox="0 0 640 400" role="img" aria-labelledby={titleId} preserveAspectRatio="none">
+    <title id={titleId}>{thumbnail.alt}</title>
+    <defs>
+      <linearGradient id={`${titleId}-shine`} x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.74)" />
+        <stop offset="48%" stop-color="rgba(255,255,255,0.18)" />
+        <stop offset="100%" stop-color="rgba(255,255,255,0.42)" />
+      </linearGradient>
+      <pattern id={`${titleId}-grid`} width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.24)" stroke-width="1" />
+      </pattern>
+    </defs>
+    <rect width="640" height="400" fill="var(--thumb-bg)" />
+    <rect width="640" height="400" fill={`url(#${titleId}-grid)`} opacity="0.72" />
+    <path d="M80 286 C180 210 250 250 330 172 C406 98 484 138 564 74" fill="none" stroke="rgba(255,255,255,0.76)" stroke-width="7" stroke-linecap="round" />
+    <path d="M80 310 C184 242 252 276 336 206 C420 134 492 176 564 118" fill="none" stroke="rgba(9,9,11,0.2)" stroke-width="3" stroke-linecap="round" />
+    <g fill="none" stroke="rgba(255,255,255,0.62)" stroke-width="2">
+      <rect x="66" y="62" width="142" height="86" rx="12" />
+      <rect x="430" y="222" width="144" height="92" rx="12" />
+      <path d="M208 105 H318 V236 H430" />
+    </g>
+    <g fill="rgba(255,255,255,0.82)">
+      <circle cx="80" cy="286" r="9" />
+      <circle cx="330" cy="172" r="9" />
+      <circle cx="564" cy="74" r="9" />
+    </g>
+    <rect x="0" y="0" width="640" height="400" fill={`url(#${titleId}-shine)`} opacity="0.28" />
+  </svg>
+  <figcaption class="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded border border-cyan-300/40 bg-[rgba(34,34,38,0.85)] px-3 py-2 font-mono text-[12px] font-semibold text-accent shadow-[0_18px_36px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
+    <span>{thumbnail.label}</span>
+    <span class="font-display text-[16px] text-white">{number}</span>
+  </figcaption>
+</figure>

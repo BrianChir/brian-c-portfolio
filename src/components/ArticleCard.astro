@@ -19,22 +19,22 @@ const { article, href } = Astro.props;
 {href ? (
   <a
     href={href}
-    class="surface-hover block h-full cursor-pointer rounded-lg border border-border bg-surface-card p-6 hover:border-accent hover:bg-surface-alt"
+    class="surface-hover glass-panel tech-frame block h-full cursor-pointer rounded-lg p-6 hover:border-accent hover:shadow-[var(--shadow-glass)]"
     {...analyticsAttributes('cta_click', `article-${article.title}`)}
   >
     <p class="mb-3 text-label-sm font-semibold uppercase text-accent">{article.category}</p>
     <h2 class="mb-3 font-display text-[17px] font-normal leading-[1.35] text-text">{article.title}</h2>
     <p class="mb-4 text-body-xs text-text-secondary">{article.abstract}</p>
-    <span class="inline-flex rounded bg-surface-alt px-3 py-1 text-label-sm font-medium normal-case tracking-normal text-text-secondary">
+    <span class="chip px-3 py-1 text-label-sm font-medium normal-case tracking-normal">
       {article.status === 'published' ? 'published' : 'coming soon'}
     </span>
   </a>
 ) : (
-  <article class="surface-hover h-full rounded-lg border border-border bg-surface-card p-6 hover:border-accent hover:bg-surface-alt">
+  <article class="surface-hover glass-panel tech-frame h-full rounded-lg p-6 hover:border-accent hover:shadow-[var(--shadow-glass)]">
     <p class="mb-3 text-label-sm font-semibold uppercase text-accent">{article.category}</p>
     <h2 class="mb-3 font-display text-[17px] font-normal leading-[1.35] text-text">{article.title}</h2>
     <p class="mb-4 text-body-xs text-text-secondary">{article.abstract}</p>
-    <span class="inline-flex rounded bg-surface-alt px-3 py-1 text-label-sm font-medium normal-case tracking-normal text-text-secondary">
+    <span class="chip px-3 py-1 text-label-sm font-medium normal-case tracking-normal">
       {article.status === 'published' ? 'published' : 'coming soon'}
     </span>
   </article>

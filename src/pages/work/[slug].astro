@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CaseStudyDetail from '../../components/CaseStudyDetail.astro';
+import ProjectThumbnail from '../../components/ProjectThumbnail.astro';
 
 const studies = await getCollection('case-studies');
 const study = studies.find((entry) => entry.data.slug === Astro.params.slug);
@@ -32,24 +33,29 @@ const caseStudyStructuredData = {
   description={study.data.description}
   structuredData={caseStudyStructuredData}
 >
-  <article class="section-shell pt-24 pb-20">
+  <article class="section-shell page-stack">
     <a href="/work" class="ui-link mb-6 inline-block cursor-pointer text-label-sm font-semibold uppercase text-accent">
       Back to all projects
     </a>
-    <div class="mb-3 flex flex-wrap items-baseline gap-3">
-      <span class="font-display text-[28px] font-semibold text-accent">{study.data.number}</span>
-      <span class="text-label-sm font-semibold uppercase text-text-secondary">{study.data.phase}</span>
-    </div>
-    <p class="mb-2 text-label-sm font-semibold uppercase text-text-secondary">{study.data.category}</p>
-    <h1 class="mb-3 font-display text-page-title font-medium text-text">{study.data.title}</h1>
-    <p class="mb-2 font-display text-[22px] font-normal text-text-secondary">{study.data.subtitle}</p>
-    <p class="mb-6 max-w-measure text-body text-text-secondary">{study.data.description}</p>
-    <div class="mb-10 flex flex-wrap gap-2">
-      {study.data.tags.map((tag) => (
-        <span class="rounded-md bg-surface-alt px-2.5 py-1 text-label-sm font-medium normal-case text-text-secondary">
-          {tag}
-        </span>
-      ))}
+    <div class="mb-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+      <div>
+        <div class="mb-3 flex flex-wrap items-baseline gap-3">
+          <span class="font-display text-[28px] font-semibold text-accent">{study.data.number}</span>
+          <span class="text-label-sm font-semibold uppercase text-text-secondary">{study.data.phase}</span>
+        </div>
+        <p class="mb-2 text-label-sm font-semibold uppercase text-text-secondary">{study.data.category}</p>
+        <h1 class="mb-3 font-display text-page-title font-medium text-text">{study.data.title}</h1>
+        <p class="mb-2 font-display text-[22px] font-normal text-text-secondary">{study.data.subtitle}</p>
+        <p class="mb-6 max-w-measure text-body text-text-secondary">{study.data.description}</p>
+        <div class="flex flex-wrap gap-2">
+          {study.data.tags.map((tag) => (
+            <span class="chip px-2.5 py-1 text-label-sm font-medium normal-case text-text-secondary">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+      <ProjectThumbnail thumbnail={study.data.thumbnail} number={study.data.number} />
     </div>
     <div class="mb-10 prose-shell max-w-measure">
       <Content />

@@ -2,58 +2,17 @@
 import { siteMeta } from '../data/site';
 import { analyticsAttributes } from '../lib/analytics';
 ---
-
 <section class="hero-shell">
-  <div class="hero-grid">
-    <div class="max-w-[720px]">
-      <p class="mb-4 text-label font-semibold uppercase text-accent">Senior Product Manager &amp; Builder - Nairobi - Remote-first</p>
-      <h1 class="text-balance mb-6 font-display text-[clamp(34px,4.2vw,52px)] font-semibold leading-[1.12] text-text">
-        Brian Chirchir builds trusted fintech, SaaS, AI, and civic tech products for 1M+ users.
-      </h1>
-      <p class="mb-6 max-w-[690px] text-body text-text-secondary">
-        I turn constraints into products people trust. Across M-PESA, PAYGO solar, civic tech, edtech, and enterprise platforms, I lead discovery, product strategy, technical specification, delivery, and stakeholder alignment for teams working across East Africa and global remote markets.
-      </p>
-
-      <div class="mb-8 flex flex-wrap gap-3">
-        <a
-          href={siteMeta.bookingUrl}
-          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded bg-accent px-6 py-3 text-[13px] font-semibold text-surface transition-colors duration-200 hover:bg-text hover:text-surface"
-          {...analyticsAttributes('cta_click', 'hero-booking')}
-        >
-          Start a conversation
-        </a>
-        <a
-          href="/work"
-          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-card px-6 py-3 text-[13px] font-semibold text-text transition-colors duration-200 hover:border-accent"
-          {...analyticsAttributes('cta_click', 'hero-view-projects')}
-        >
-          See what I've built
-        </a>
-        <a
-          href={siteMeta.cvRequestUrl}
-          download
-          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-card px-6 py-3 text-[13px] font-semibold text-text transition-colors duration-200 hover:border-accent"
-          {...analyticsAttributes('cta_click', 'hero-cv-request')}
-        >
-          Download CV
-        </a>
-      </div>
+  <div class="mb-5 flex flex-wrap items-center justify-between gap-3"><p class="eyebrow">Senior Product Manager &amp; Builder · Nairobi</p><p class="chip">●&nbsp; Open to senior product roles &amp; consulting</p></div>
+  <div class="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_220px]">
+    <div>
+      <h1 class="mb-5 font-display text-hero font-normal text-text">Brian Chirchir<br /><em class="text-accent">8+ years. 1M+ users. 30+ countries.</em><br />I turn constraints into products people trust.</h1>
+      <p class="mb-7 max-w-[720px] text-[15px] leading-7 text-text-secondary">The fintech platform processing M-PESA payments for smallholder farmers. The civic tech election system where trust had to be the architecture, not a feature. The ILO methodology that needed to work on a feature phone, not just in a training room. I do the messy work between the idea and the shipped product — and I stay for what comes after.</p>
+      <div class="flex flex-wrap gap-3"><a href="/work" class="button-dark" {...analyticsAttributes('cta_click','hero-products')}>See the products →</a><a href={siteMeta.bookingUrl} class="button-accent">Let's talk</a><a href={siteMeta.cvRequestUrl} download class="button-muted">▧&nbsp; Download CV (PDF)</a></div>
     </div>
-
-    <figure class="hero-media overflow-hidden rounded-lg border border-border bg-surface-card">
-      <img
-        src="/brian.png"
-        alt="Brian Chirchir, Senior Product Manager in Nairobi"
-        class="aspect-[4/5] h-full w-full object-cover object-center"
-        loading="eager"
-      />
-      <figcaption class="border-t border-border px-5 py-4 text-body-xs text-text-secondary">
-        Brian Chirchir, Nairobi-based Senior Product Manager building for places where trust is earned in the details.
-      </figcaption>
+    <figure class="card mx-auto w-full max-w-[220px] overflow-hidden">
+      <img src="/brian.png" alt="Brian Chirchir, Senior Product Manager based in Nairobi" class="aspect-[4/5] h-full w-full object-cover object-center" loading="eager" fetchpriority="high" />
+      <figcaption class="border-t border-border px-4 py-3 text-[10px] leading-4 text-text-secondary">Brian Chirchir<br />Nairobi, Kenya</figcaption>
     </figure>
   </div>
-
-  <p class="mb-6 mt-6 text-small font-medium text-accent">Open to senior product roles - consulting engagements - remote-first across time zones</p>
-
-  <slot />
 </section>

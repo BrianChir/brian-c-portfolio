@@ -67,10 +67,10 @@ const competencies = [
   title="Competencies | Brian Chirchir - Senior Product Manager"
   description="Evidence-backed product management competencies across product ownership, M-PESA integrations, discovery, technical specification, AI strategy, and stakeholder management."
 >
-  <section class="section-shell pt-24 pb-12">
+  <section class="section-shell pt-24 pb-10">
     <p class="mb-3 text-label font-semibold uppercase text-accent">Competencies</p>
     <h1 class="mb-5 font-display text-page-title font-normal text-text">Verified product judgement, not a keyword list.</h1>
-    <p class="max-w-measure text-body text-text-secondary">
+    <p class="max-w-[78ch] text-body text-text-secondary">
       These are the capabilities that show up repeatedly across my work: each claim is connected to a named product, delivery context, or measurable outcome elsewhere on the site.
     </p>
   </section>
@@ -78,7 +78,7 @@ const competencies = [
   <section class="wide-shell pb-16">
     <div class="grid gap-4 md:grid-cols-2">
       {competencies.map((competency) => (
-        <article class="rounded-lg border border-border bg-surface-card p-6">
+        <article class="glass-panel tech-frame rounded-lg p-6">
           <h2 class="mb-3 font-display text-case-title font-medium text-text">{competency.title}</h2>
           <p class="mb-3 text-body-sm text-text-secondary">{competency.claim}</p>
           <p class="mb-4 text-body-sm text-text-secondary">{competency.evidence}</p>

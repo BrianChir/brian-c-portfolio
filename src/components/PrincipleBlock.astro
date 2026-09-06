@@ -8,10 +8,10 @@ interface Props {
 const { number, title, body } = Astro.props;
 ---
 
-<article class="mb-9">
+<article class="glass-panel tech-frame h-full rounded-lg p-5">
   <div class="mb-3 flex items-start gap-3">
     <span class="min-w-[32px] font-display text-[24px] italic text-accent/60">{number}</span>
     <h2 class="m-0 font-display text-[19px] font-medium text-text">{title}</h2>
   </div>
-  <p class="m-0 text-body-sm text-text-secondary sm:pl-[44px]">{body}</p>
+  <p class="m-0 text-body-sm text-text-secondary">{body}</p>
 </article>

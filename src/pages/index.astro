@@ -1,127 +1,29 @@
 ---
 export const prerender = true;
-
-import Hero from '../components/Hero.astro';
-import InfoGrid from '../components/InfoGrid.astro';
-import ProjectSummaryCard from '../components/ProjectSummaryCard.astro';
-import StatsRow from '../components/StatsRow.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { siteMeta } from '../data/site';
-import { analyticsAttributes } from '../lib/analytics';
-import { heroInfo, stats, trustedOrganizations } from '../data/home';
+import Hero from '../components/Hero.astro';
+import { heroInfo, stats } from '../data/home';
 import { getProducts } from '../lib/products';
-import { getCollection } from 'astro:content';
-
-const products = await getProducts();
-const articles = (await getCollection('articles'))
-  .filter((article) => article.data.status === 'published')
-  .sort((a, b) => a.data.sortOrder - b.data.sortOrder)
-  .slice(0, 3);
+import { siteMeta } from '../data/site';
+const products = (await getProducts()).slice(0,3);
+const workImages = ['/images/projects/daylipa.png','/images/projects/duka.png','/images/projects/wealthtrack.png'];
+const discipline = [
+  ['01. Ground truth','Field interviews and ethnographic research in low-bandwidth, high-constraint contexts.'],
+  ['02. System arch','Pragmatic data schemas, API contracts, USSD fallbacks, and offline sync mechanics.'],
+  ['03. Ship cycle','Tight weekly iterations, engineering unblocking, telemetry, and automated audit trails.'],
+  ['04. Unit adoption','Unit economics, payment recovery rates, merchant retention, and organizational trust.'],
+];
 ---
-
-<BaseLayout
-  pathname="/"
-  title="Brian Chirchir | Senior Product Manager for Fintech, SaaS, AI & Civic Tech"
-  description="Brian Chirchir is a Senior Product Manager in Nairobi building fintech, M-PESA, SaaS, AI, civic tech, and edtech products across East Africa and global remote teams."
->
-  <Hero>
-    <InfoGrid items={heroInfo} />
-  </Hero>
-
-  <StatsRow items={stats} />
-
-  <section class="border-y border-border bg-surface-alt py-8">
-    <div class="wide-shell">
-      <p class="mb-4 text-label-sm font-semibold uppercase text-text-secondary">Built for and alongside</p>
-      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
-        {trustedOrganizations.map((organization) => (
-          <div class="flex min-h-14 items-center justify-center rounded border border-border bg-surface-card px-3 py-2 text-center text-[13px] font-semibold text-text-secondary">
-            {organization}
-          </div>
-        ))}
-      </div>
-    </div>
+<BaseLayout pathname="/">
+  <Hero />
+  <section class="section-shell pb-14">
+    <div class="card grid grid-cols-2 overflow-hidden sm:grid-cols-4">{stats.map((stat)=><div class="border-b border-r border-border p-5 last:border-r-0 sm:border-b-0"><p class="font-display text-[34px] text-accent">{stat.number}</p><p class="mt-2 text-[11px] leading-5 text-text-secondary">{stat.label}</p></div>)}</div>
+    <div class="mt-12 grid gap-4 sm:grid-cols-2">{heroInfo.map((item)=><article class="card p-6"><h2 class="mb-2 text-[14px] font-semibold text-text">{item.label}</h2><p class="text-[12px] leading-5 text-text-secondary">{item.value}</p></article>)}</div>
   </section>
-
-  <section class="wide-shell py-12">
-    <p class="mb-3 text-label font-semibold uppercase text-text-secondary">Products</p>
-    <h2 class="mb-6 font-display text-section-title font-normal text-text">Built around real constraints.</h2>
-    <div class="grid gap-4 md:grid-cols-2">
-      {products.map((product) => (
-        <ProjectSummaryCard
-          number={product.number}
-          category={product.category}
-          status={product.status}
-          title={product.name}
-          description={product.product}
-          href="/work"
-        />
-      ))}
-    </div>
+  <section class="section-shell py-12">
+    <div class="mb-7 flex items-end justify-between"><div><p class="text-[9px] uppercase tracking-widest text-text-muted">Selected work</p><h2 class="font-display text-section-title">Products I have helped build.</h2></div><a href="/work" class="text-[11px] font-semibold text-accent">View all portfolio items →</a></div>
+    <div class="space-y-5">{products.map((product,i)=><article class="card grid overflow-hidden sm:grid-cols-[42%_1fr]"><div class="min-h-52 bg-surface-alt"><img src={workImages[i]} alt={product.thumbnail.alt} class="h-full w-full object-cover" loading="lazy" /></div><div class="flex flex-col justify-center p-6"><div class="mb-3 flex flex-wrap gap-1"><span class="chip">{product.status}</span><span class="chip">{product.category}</span></div><h3 class="mb-2 font-display text-[22px] font-medium">{product.name}</h3><p class="mb-5 text-[12px] leading-5 text-text-secondary">{product.product}</p><a href={`/work#${product.slug}`} class="self-end text-[11px] font-semibold">Read case study →</a></div></article>)}</div>
   </section>
-
-  <section class="bg-surface-alt py-12">
-    <div class="wide-shell">
-      <p class="mb-3 text-label font-semibold uppercase text-text-secondary">Thinking</p>
-      <div class="grid items-start gap-6 md:grid-cols-[minmax(0,1fr)_300px]">
-        <div class="max-w-measure">
-          <h2 class="mb-4 font-display text-section-title font-normal text-text">Lessons worth sharing.</h2>
-          <p class="mb-5 text-body text-text-secondary">
-            Essays and frameworks from 8+ years of building in fintech, civic tech, clean energy, and entrepreneurship training.
-          </p>
-          <div class="flex flex-wrap gap-3">
-            <a
-              href="/thinking"
-              class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-card px-5 py-3 text-[13px] font-semibold text-text hover:border-accent"
-              {...analyticsAttributes('cta_click', 'home-thinking')}
-            >
-              Read the thinking
-            </a>
-          </div>
-        </div>
-        <div class="rounded-lg border border-border bg-surface-card p-4">
-          <p class="mb-3 text-label-sm font-semibold uppercase text-text-secondary">Published</p>
-          <div class="space-y-2">
-            {articles.map((article) => (
-              <a
-                href={`/thinking/${article.data.slug}`}
-                class="surface-hover block rounded border border-border bg-surface-alt px-3 py-2 text-body-xs text-text-secondary hover:border-accent"
-                {...analyticsAttributes('cta_click', `home-article-${article.data.slug}`)}
-              >
-                {article.data.title}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-14">
-    <div class="section-shell text-center">
-      <p class="mb-3 text-label font-semibold uppercase text-text-secondary">What I bring</p>
-      <h2 class="text-balance mb-4 font-display text-section-title font-normal text-text">
-        Your product problem<br /><em class="text-accent">deserves someone who has shipped under pressure.</em>
-      </h2>
-      <p class="mx-auto mb-8 max-w-[520px] text-body text-text-secondary">
-        I bring 8+ years of building across M-PESA, IoT, SaaS, and civic tech in markets where constraints are real, trust is earned, and there's no room for features that don't solve problems. If you're looking for a product person who can move from whiteboard to shipped code and take your team along, I'd like to hear what you're working on.
-      </p>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a
-          href="/services"
-          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded bg-accent px-6 py-3 text-[13px] font-semibold text-surface transition-colors duration-200 hover:bg-text"
-          {...analyticsAttributes('cta_click', 'home-services')}
-        >
-          Explore services
-        </a>
-        <a
-          href={siteMeta.bookingUrl}
-          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-card px-6 py-3 text-[13px] font-semibold text-text transition-colors duration-200 hover:border-accent"
-          {...analyticsAttributes('cta_click', 'home-value-prop-email')}
-        >
-          Start a conversation
-        </a>
-      </div>
-    </div>
-  </section>
+  <section class="section-shell py-12"><div class="card p-8"><p class="mb-2 text-[9px] uppercase tracking-widest text-text-muted">Discipline &amp; execution</p><h2 class="mb-7 font-display text-[24px]">How I bridge technical complexity and user reality.</h2><div class="grid gap-2 sm:grid-cols-4">{discipline.map(([title,body])=><div class="soft-panel p-4"><h3 class="mb-2 text-[9px] font-bold uppercase text-accent">{title}</h3><p class="text-[11px] leading-5 text-text-secondary">{body}</p></div>)}</div></div></section>
+  <section class="section-shell py-12"><div class="card px-7 py-14 text-center"><p class="eyebrow mb-3">Start a dialogue</p><h2 class="mx-auto mb-4 max-w-[560px] font-display text-[36px] leading-tight">Every engagement starts with a conversation.</h2><p class="mx-auto mb-6 max-w-[520px] text-[12px] text-text-secondary">If you're building something that needs a product person who has shipped under real constraints, I'd like to hear what you're working on.</p><div class="flex flex-wrap justify-center gap-3"><a href={siteMeta.bookingUrl} class="button-accent">Book a call →</a><a href={`mailto:${siteMeta.email}`} class="button-muted">✉&nbsp; Email directly: {siteMeta.email}</a></div></div></section>
 </BaseLayout>

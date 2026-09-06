@@ -1,5 +1,14 @@
 ---
 import { analyticsAttributes } from '../lib/analytics';
+import ProjectThumbnail from './ProjectThumbnail.astro';
+
+interface Thumbnail {
+  label: string;
+  alt: string;
+  from: string;
+  via: string;
+  to: string;
+}
 
 interface Props {
   number: string;
@@ -8,24 +17,25 @@ interface Props {
   title: string;
   description: string;
   href: string;
+  thumbnail: Thumbnail;
 }
 
-const { number, category, status, title, description, href } = Astro.props;
+const { number, category, status, title, description, href, thumbnail } = Astro.props;
 const statusTone = status?.toLowerCase().includes('live')
-  ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-200'
+  ? 'border-emerald-500/30 bg-emerald-500/10 text-text'
   : status?.toLowerCase().includes('development')
-    ? 'border-amber-500/35 bg-amber-500/10 text-amber-200'
+    ? 'border-amber-500/35 bg-amber-500/10 text-text'
     : 'border-border bg-surface-alt text-text-secondary';
 ---
 
-<article class="surface-hover rounded-lg border border-border bg-surface-card hover:border-accent hover:bg-surface-alt">
-  <a href={href} class="group block h-full cursor-pointer p-5" {...analyticsAttributes('cta_click', `project-${number}`)}>
-    <p class="mb-4 font-display text-[28px] italic text-accent/60">{number}</p>
+<article class="surface-hover glass-panel tech-frame rounded-lg hover:border-accent hover:shadow-[var(--shadow-glass)]">
+  <a href={href} class="group block h-full cursor-pointer p-4" {...analyticsAttributes('cta_click', `project-${number}`)}>
+    <ProjectThumbnail thumbnail={thumbnail} number={number} class="mb-5" />
     <div class="mb-3 flex flex-wrap items-center gap-2">
       <p class="m-0 text-label-sm font-semibold uppercase text-text-secondary">{category}</p>
       {status && (
         <span class:list={[
-          'rounded border px-2 py-0.5 text-label-sm font-medium normal-case tracking-normal',
+          'chip px-2 py-0.5 text-label-sm font-medium normal-case tracking-normal',
           statusTone,
         ]}>
           {status}

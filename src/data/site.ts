@@ -25,8 +25,7 @@ export const siteMeta = {
   linkedin: 'https://www.linkedin.com/in/brian-chirchir/',
   github: 'https://github.com/BrianChir',
   cvRequestUrl: '/Brian-Chirchir-CV.pdf',
-  bookingUrl:
-    'mailto:chirchir.brian@yahoo.com?subject=Product%20conversation%20with%20Brian%20Chirchir',
+  bookingUrl: '/book',
   domain: 'https://www.brianchirchir.tech',
   location: 'Nairobi, Kenya',
   jobTitle: 'Senior Product Manager',
@@ -35,8 +34,7 @@ export const siteMeta = {
 export const navItems = [
   { href: '/', label: 'Home' },
   { href: '/work', label: 'Products' },
-  { href: '/services', label: 'Services' },
-  { href: '/competencies', label: 'Competencies' },
+  { href: '/services', label: 'Work with me' },
   { href: '/thinking', label: 'Thinking' },
   { href: '/about', label: 'About' },
 ];

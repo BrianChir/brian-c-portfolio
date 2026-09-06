@@ -1,100 +1,48 @@
 ---
 export const prerender = true;
-
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteMeta } from '../data/site';
 import { analyticsAttributes } from '../lib/analytics';
-
-const services = [
+const waysToWork = [
   {
-    title: 'Product Management Consulting',
-    timeframe: '2-8 week discovery or delivery sprint',
-    body:
-      'End-to-end product ownership for teams building in fintech, civic tech, SaaS, edtech, and emerging-market infrastructure. I help frame the problem, align stakeholders, define the delivery path, and keep execution connected to real user constraints.',
+    number: '01',
+    title: 'Full-time product role',
+    body: "I'm looking for a senior product role where I can own a product area end-to-end — particularly in fintech, civic tech, or platforms serving emerging markets. Remote-first, async-friendly, outcome-driven. If your team is building something that needs someone who has shipped under real constraints, I'd like to hear about it.",
   },
   {
-    title: 'Fintech Service and Payment Systems Product Strategy',
-    timeframe: '1-4 week architecture and product review',
-    body:
-      'Integration design, reconciliation logic, payment journey review, and product strategy for teams building around fintech services or adjacent mobile money ecosystems. Useful when trust, idempotency, delayed callbacks, and field realities matter as much as the happy path.',
+    number: '02',
+    title: 'Contract product work',
+    body: "I take on scoped engagements: product discovery sprints, technical specification, PRD and UAT documentation, M-PESA integration strategy, or AI product scoping. These typically run 2–8 weeks and end with a deliverable your team can build from. Recent examples: the SANK e-Election specification suite, the BDS Mentorship Platform UAT runbook with 107 test cases, and BizFramer's partnership framework with ICST Kenya.",
   },
   {
-    title: 'Product Discovery and User Research',
-    timeframe: '2-6 week research engagement',
-    body:
-      'Human-centred discovery for low-bandwidth, infrastructure-constrained, or high-trust environments. I run constraint mapping, user interviews, field synthesis, and decision-ready product recommendations.',
-  },
-  {
-    title: 'Technical Product Specification',
-    timeframe: '1-3 week specification package',
-    body:
-      'PRDs, user stories, acceptance criteria, UAT runbooks, and development handoff documentation for organisations that need senior product thinking before or alongside engineering delivery.',
-  },
-  {
-    title: 'AI Product Strategy',
-    timeframe: '2-5 week scoping sprint',
-    body:
-      'Practical AI product scoping grounded in delivery experience from WealthTrack, YodaAI, and BizFramer. I help teams identify where AI creates usable leverage, where rules still matter, and what needs to be measured before launch.',
+    number: '03',
+    title: 'Advisory and collaboration',
+    body: "If you're building in East Africa or emerging markets and want a sounding board — someone who has navigated M-PESA infrastructure, low-bandwidth constraints, and trust-first design — I'm happy to have that conversation. Some of the best work I've done started as a coffee chat, not a contract.",
   },
 ];
 ---
+<BaseLayout pathname="/services" title="Work with Brian Chirchir | Senior Product Manager" description="Explore full-time, contract, and advisory ways to work with Brian Chirchir on products for emerging markets.">
+  <section class="section-shell page-stack">
+    <p class="eyebrow mb-3">Work with me</p>
+    <h1 class="mb-5 font-display text-page-title font-normal">How we can work together.</h1>
+    <p class="mb-12 max-w-[620px] text-[15px] leading-7 text-text-secondary">I take on product work in three ways — and I'm open to conversations that don't fit neatly into a box.</p>
 
-<BaseLayout
-  pathname="/services"
-  title="Services | Brian Chirchir - Senior Product Manager"
-  description="Product management consulting, fintech service strategy, user research, technical product specification, and AI product strategy services from Brian Chirchir."
->
-  <section class="section-shell pt-24 pb-12">
-    <p class="mb-3 text-label font-semibold uppercase text-accent">Services</p>
-    <h1 class="mb-5 font-display text-page-title font-normal text-text">Product leadership for teams building under real constraints.</h1>
-    <p class="max-w-measure text-body text-text-secondary">
-      I work with organisations that need senior product thinking without adding ceremony for its own sake: discovery, strategy, specifications, stakeholder alignment, and delivery oversight for products where trust, infrastructure, and adoption decide the outcome.
-    </p>
-  </section>
-
-  <section class="wide-shell pb-16">
-    <div class="grid gap-4 md:grid-cols-2">
-      {services.map((service) => (
-        <article class="rounded-lg border border-border bg-surface-card p-6">
-          <p class="mb-3 text-label-sm font-semibold uppercase text-accent">{service.timeframe}</p>
-          <h2 class="mb-3 font-display text-case-title font-medium text-text">{service.title}</h2>
-          <p class="mb-5 text-body-sm text-text-secondary">{service.body}</p>
-          <a
-            href={`${siteMeta.bookingUrl}&body=I%20would%20like%20to%20discuss%20${encodeURIComponent(service.title)}.`}
-            class="ui-link inline-flex min-h-12 cursor-pointer items-center text-body-sm font-semibold text-accent"
-            {...analyticsAttributes('cta_click', `service-${service.title}`)}
-          >
-            Discuss this service
-          </a>
+    <div class="space-y-5">
+      {waysToWork.map((way) => (
+        <article class="card p-7 sm:p-9">
+          <div class="grid gap-5 sm:grid-cols-[48px_1fr]">
+            <span class="font-display text-[25px] italic text-accent">{way.number}</span>
+            <div><h2 class="mb-3 font-display text-[25px] font-medium">{way.title}</h2><p class="text-[14px] leading-7 text-text-secondary">{way.body}</p></div>
+          </div>
         </article>
       ))}
     </div>
-  </section>
 
-  <section class="bg-surface-alt py-14">
-    <div class="section-shell text-center">
-      <p class="mb-3 text-label font-semibold uppercase text-text-secondary">Engagements</p>
-      <h2 class="text-balance mb-5 font-display text-section-title font-normal text-text">Useful when the work is too important to stay vague.</h2>
-      <p class="mx-auto mb-8 max-w-measure text-body text-text-secondary">
-        The best fit is a team with a real product problem, a complex operating environment, and a need for clear product judgement across business, users, and engineering.
-      </p>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a
-          href={siteMeta.bookingUrl}
-          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded bg-accent px-6 py-3 text-[13px] font-semibold text-surface transition-colors duration-200 hover:bg-text"
-          {...analyticsAttributes('cta_click', 'services-booking')}
-        >
-          Start a conversation
-        </a>
-        <a
-          href={siteMeta.cvRequestUrl}
-          download
-          class="surface-hover inline-flex min-h-12 cursor-pointer items-center rounded border border-border bg-surface-card px-6 py-3 text-[13px] font-semibold text-text transition-colors duration-200 hover:border-accent"
-          {...analyticsAttributes('cta_click', 'services-cv')}
-        >
-          Download CV
-        </a>
-      </div>
+    <div class="mt-12 rounded-md bg-[#171412] px-7 py-10 text-white sm:px-10">
+      <p class="mb-3 text-[10px] font-semibold uppercase tracking-widest text-[#d98970]">Let's talk</p>
+      <h2 class="mb-4 max-w-[620px] font-display text-[30px] leading-tight">Tell me what you're building, where it's stuck, or what you want to make possible.</h2>
+      <p class="mb-7 max-w-[620px] text-[13px] leading-6 text-white/70">No polished brief required. A useful conversation is enough to find out whether I can help.</p>
+      <div class="flex flex-wrap gap-3"><a href={siteMeta.bookingUrl} class="button-accent" {...analyticsAttributes('cta_click','work-with-me-booking')}>Book a call →</a><a href={`mailto:${siteMeta.email}`} class="inline-flex min-h-11 items-center px-2 text-[12px] font-semibold text-white">{siteMeta.email}</a></div>
     </div>
   </section>
 </BaseLayout>

@@ -14,8 +14,8 @@ const { items } = Astro.props;
 <section class="py-6">
   <div class="wide-shell grid grid-cols-2 gap-4 md:grid-cols-4">
     {items.map((item) => (
-      <article class="surface-hover rounded-lg border border-border bg-transparent p-4 hover:border-accent">
-        <p class="mb-3 font-display text-[36px] font-normal tracking-[-0.02em] text-accent">{item.number}</p>
+      <article class="surface-hover glass-panel kpi-card tech-frame rounded-lg p-4 hover:border-accent hover:shadow-[var(--shadow-glass-focus)]">
+        <p class="mb-3 font-display text-[36px] font-normal tracking-normal text-accent">{item.number}</p>
         <p class="m-0 text-small text-text-secondary">{item.label}</p>
       </article>
     ))}

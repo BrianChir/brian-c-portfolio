@@ -2,6 +2,14 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
+const thumbnailSchema = z.object({
+  label: z.string(),
+  alt: z.string(),
+  from: z.string(),
+  via: z.string(),
+  to: z.string(),
+});
+
 const caseStudies = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/case-studies' }),
   schema: z.object({
@@ -12,6 +20,7 @@ const caseStudies = defineCollection({
     title: z.string(),
     subtitle: z.string(),
     description: z.string(),
+    thumbnail: thumbnailSchema,
     tags: z.array(z.string()),
     problem: z.string(),
     user: z.string(),
@@ -63,6 +72,7 @@ const products = defineCollection({
     solution: z.string(),
     definingDecision: z.string(),
     outcome: z.string(),
+    thumbnail: thumbnailSchema,
     sortOrder: z.number(),
   }),
 });

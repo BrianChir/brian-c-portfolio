@@ -37,7 +37,7 @@ const { study } = Astro.props;
     <h3 class="mb-4 font-display text-subsection font-medium text-text">Operating constraints</h3>
     <div class="grid gap-4 md:grid-cols-2">
       {study.constraints.map((constraint) => (
-        <div class="rounded-md bg-surface-alt px-4 py-3">
+        <div class="glass-panel rounded-md px-4 py-3 shadow-none">
           <p class="m-0 text-body-xs text-text-secondary">
             <span class="mr-2 text-accent">-&gt;</span>{constraint}
           </p>
@@ -50,7 +50,7 @@ const { study } = Astro.props;
     <h3 class="mb-4 font-display text-subsection font-medium text-text">Strategic approach</h3>
     <div class="space-y-4">
       {study.decisions.map((decision, index) => (
-        <div class="border-t border-border pt-4 first:border-t-0 first:pt-0">
+        <div class="glass-panel tech-frame rounded-lg p-4">
           <div class="mb-2 flex items-start gap-3">
             <span class="font-display text-[16px] italic text-accent">{String(index + 1).padStart(2, '0')}</span>
             <div>
@@ -80,7 +80,7 @@ const { study } = Astro.props;
     </section>
   </div>
 
-  <section class="border-l-[3px] border-accent bg-surface-alt px-6 py-5">
+  <section class="glass-panel tech-frame rounded-lg border-l-[3px] border-l-accent px-6 py-5">
     <h3 class="mb-3 font-display text-subsection font-medium text-text">Reflection</h3>
     <p class="m-0 text-body-sm italic text-text-secondary">{study.reflection}</p>
   </section>

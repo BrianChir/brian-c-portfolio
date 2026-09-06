@@ -1,27 +1,27 @@
 export const heroInfo = [
   {
     label: 'What I do',
-    value: 'Senior product strategy, discovery, specifications, cross-functional delivery, M-PESA integrations',
+    value: 'Product strategy, M-PESA integration, field user research, technical specification, and end-to-end cross-functional delivery from Day 0 to scale.',
   },
   {
     label: 'Where I thrive',
-    value: 'Remote teams solving hard problems in fintech, edtech, civic tech, and enterprise',
+    value: 'Remote teams building products that matter — fintech, civic tech, SaaS, and AI across East Africa and emerging markets.',
   },
   {
     label: 'Home base',
-    value: 'Nairobi, Kenya, collaborating with teams across East Africa, Europe, and the US',
+    value: 'Nairobi, Kenya. Async-first workflow natively operating across East Africa, Europe, and US East Coast time zones.',
   },
   {
     label: 'Right now',
-    value: 'Building BizFramer (ILO SIYB SaaS) and WealthTrack (personal finance PWA) under Civanta.io',
+    value: 'Building BizFramer and WealthTrack under Civanta.io. Actively open to senior product lead roles and strategic advisory.',
   },
 ];
 
 export const stats = [
-  { number: '7', label: 'products built, managed, or specified across high-trust domains' },
-  { number: '8+', label: 'years building products across fintech, civic tech, and enterprise' },
-  { number: '1M+', label: 'users directly impacted through platforms, services, and field programs' },
+  { number: '1M+', label: "people reached through products I've helped ship" },
   { number: '30+', label: 'countries worked across through research, delivery, and partnerships' },
+  { number: '7', label: 'products built across fintech, civic tech, SaaS & AI' },
+  { number: '8+', label: 'years in product and technology' },
 ];
 
 export const trustedOrganizations = [
