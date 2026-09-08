@@ -22,27 +22,28 @@ const waysToWork = [
 ];
 ---
 <BaseLayout pathname="/services" title="Work with Brian Chirchir | Senior Product Manager" description="Explore full-time, contract, and advisory ways to work with Brian Chirchir on products for emerging markets.">
-  <section class="section-shell page-stack">
+  <section class="layout-shell page-stack">
     <p class="eyebrow mb-3">Work with me</p>
     <h1 class="mb-5 font-display text-page-title font-normal">How we can work together.</h1>
-    <p class="mb-12 max-w-[620px] text-[15px] leading-7 text-text-secondary">I take on product work in three ways — and I'm open to conversations that don't fit neatly into a box.</p>
+    <p class="reading-width mb-12 text-[15px] leading-7 text-text-secondary">I take on product work in three ways — and I'm open to conversations that don't fit neatly into a box.</p>
 
-    <div class="space-y-5">
+    <div class="grid gap-5 lg:grid-cols-3">
       {waysToWork.map((way) => (
-        <article class="card p-7 sm:p-9">
-          <div class="grid gap-5 sm:grid-cols-[48px_1fr]">
+        <article class="card p-7 sm:p-9 lg:p-7 xl:p-9">
+          <div class="grid gap-5 sm:grid-cols-[48px_1fr] lg:block">
             <span class="font-display text-[25px] italic text-accent">{way.number}</span>
-            <div><h2 class="mb-3 font-display text-[25px] font-medium">{way.title}</h2><p class="text-[14px] leading-7 text-text-secondary">{way.body}</p></div>
+            <div><h2 class="mb-3 font-display text-[25px] font-medium lg:mt-4">{way.title}</h2><p class="text-[14px] leading-7 text-text-secondary">{way.body}</p></div>
           </div>
         </article>
       ))}
     </div>
 
-    <div class="mt-12 rounded-md bg-[#171412] px-7 py-10 text-white sm:px-10">
+    <div class="mt-12 rounded-md bg-[#171412] px-6 py-10 text-white sm:px-10 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-12">
+      <div>
       <p class="mb-3 text-[10px] font-semibold uppercase tracking-widest text-[#d98970]">Let's talk</p>
       <h2 class="mb-4 max-w-[620px] font-display text-[30px] leading-tight">Tell me what you're building, where it's stuck, or what you want to make possible.</h2>
       <p class="mb-7 max-w-[620px] text-[13px] leading-6 text-white/70">No polished brief required. A useful conversation is enough to find out whether I can help.</p>
-      <div class="flex flex-wrap gap-3"><a href={siteMeta.bookingUrl} class="button-accent" {...analyticsAttributes('cta_click','work-with-me-booking')}>Book a call →</a><a href={`mailto:${siteMeta.email}`} class="inline-flex min-h-11 items-center px-2 text-[12px] font-semibold text-white">{siteMeta.email}</a></div>
+      </div><div class="flex flex-col gap-3 min-[420px]:flex-row lg:flex-col"><a href={siteMeta.bookingUrl} class="button-accent" {...analyticsAttributes('cta_click','work-with-me-booking')}>Book a call →</a><a href={`mailto:${siteMeta.email}`} class="inline-flex min-h-11 items-center justify-center px-2 text-[12px] font-semibold text-white">{siteMeta.email}</a></div>
     </div>
   </section>
 </BaseLayout>

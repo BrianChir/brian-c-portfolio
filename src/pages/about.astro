@@ -50,12 +50,12 @@ const aboutStructuredData = {
   description="Learn about Brian Chirchir, a Nairobi-based Product Manager and product builder with 8+ years across Safaricom/M-PESA, fintech, SaaS, civic tech, and enterprise platforms."
   structuredData={aboutStructuredData}
 >
-  <section class="section-shell page-stack">
+  <section class="layout-shell page-stack">
     <p class="eyebrow mb-3">About —— The person behind the work</p>
-    <div class="mb-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+    <div class="mb-10 grid gap-8 md:grid-cols-[minmax(0,1fr)_280px] md:items-start lg:grid-cols-[minmax(0,760px)_340px] lg:justify-between lg:gap-16">
       <div>
         <h1 class="mb-8 font-display text-page-title font-normal text-text">How I think about product.</h1>
-        <div class="about-bio max-w-[72ch] space-y-4 text-body text-text-secondary">
+        <div class="about-bio reading-width space-y-4 text-body text-text-secondary">
           <p class="text-left">I'm Brian — a product person based in Nairobi who believes technology should reduce inequality, not widen it. That conviction has shaped everything I've built: a payment platform that lets farmers buy solar pumps through M-PESA, a business plan tool that digitises the world's most-used entrepreneurship methodology, and an election system that treats trust as architecture.</p>
           <p class="text-left">I studied mathematics and computer science in Kenya, then earned a Swedish Institute scholarship to complete my master's in IT and Management at University West in Sweden — where I wrote my thesis on how AI fits (and doesn't fit) into real project planning. I'm PMP-certified, ILO SIYB-trained, and a McKinsey Forward alumnus. I also know that none of those credentials matter as much as whether the product actually works for the person using it.</p>
           <p class="text-left">I work async-first across time zones. My products have shipped for London-based organisations, Commonwealth-commissioned programmes, and Nairobi-based enterprises — all from the same desk in Kenya.</p>
@@ -88,7 +88,7 @@ const aboutStructuredData = {
 
     <div class="section-divider border-t border-border">
       <h2 class="mb-8 font-display text-[22px] font-normal text-text">How I approach the work.</h2>
-      <div class="grid gap-5 lg:grid-cols-3">
+      <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {principles.map((principle) => <PrincipleBlock {...principle} />)}
       </div>
       <p class="mt-6 max-w-[78ch] text-body-sm text-text-secondary">
@@ -98,7 +98,7 @@ const aboutStructuredData = {
 
     <div class="section-divider border-t border-border">
       <h2 class="mb-8 font-display text-[22px] font-normal text-text">What building the products taught me.</h2>
-      <div class="grid gap-5 lg:grid-cols-3">
+      <div class="grid gap-5 md:grid-cols-3">
         {valuePropositions.map((prop) => (
           <div class="glass-panel tech-frame rounded-lg p-5">
             <p class="mb-2 text-body-sm font-bold text-text">{prop.headline}</p>

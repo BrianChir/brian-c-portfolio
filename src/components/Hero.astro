@@ -4,13 +4,13 @@ import { analyticsAttributes } from '../lib/analytics';
 ---
 <section class="hero-shell">
   <div class="mb-5 flex flex-wrap items-center justify-between gap-3"><p class="eyebrow">Senior Product Manager &amp; Builder · Nairobi</p><p class="chip">●&nbsp; Open to senior product roles &amp; consulting</p></div>
-  <div class="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_220px]">
+  <div class="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_240px] lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_320px]">
     <div>
       <h1 class="mb-5 font-display text-hero font-normal text-text">Brian Chirchir<br /><em class="text-accent">8+ years. 1M+ users. 30+ countries.</em><br />I turn constraints into products people trust.</h1>
-      <p class="mb-7 max-w-[720px] text-[15px] leading-7 text-text-secondary">The fintech platform processing M-PESA payments for smallholder farmers. The civic tech election system where trust had to be the architecture, not a feature. The ILO methodology that needed to work on a feature phone, not just in a training room. I do the messy work between the idea and the shipped product — and I stay for what comes after.</p>
-      <div class="flex flex-wrap gap-3"><a href="/work" class="button-dark" {...analyticsAttributes('cta_click','hero-products')}>See the products →</a><a href={siteMeta.bookingUrl} class="button-accent">Let's talk</a><a href={siteMeta.cvRequestUrl} download class="button-muted">▧&nbsp; Download CV (PDF)</a></div>
+      <p class="reading-width mb-7 text-[15px] leading-7 text-text-secondary">The fintech platform processing M-PESA payments for smallholder farmers. The civic tech election system where trust had to be the architecture, not a feature. The ILO methodology that needed to work on a feature phone, not just in a training room. I do the messy work between the idea and the shipped product — and I stay for what comes after.</p>
+      <div class="flex flex-col gap-3 min-[420px]:flex-row min-[420px]:flex-wrap"><a href="/work" class="button-dark" {...analyticsAttributes('cta_click','hero-products')}>See the products →</a><a href={siteMeta.bookingUrl} class="button-accent">Let's talk</a><a href={siteMeta.cvRequestUrl} download class="button-muted">▧&nbsp; Download CV (PDF)</a></div>
     </div>
-    <figure class="card mx-auto w-full max-w-[220px] overflow-hidden">
+    <figure class="card mx-auto w-full max-w-[260px] overflow-hidden md:max-w-none">
       <img src="/brian.png" alt="Brian Chirchir, Senior Product Manager based in Nairobi" class="aspect-[4/5] h-full w-full object-cover object-center" loading="eager" fetchpriority="high" />
       <figcaption class="border-t border-border px-4 py-3 text-[10px] leading-4 text-text-secondary">Brian Chirchir<br />Nairobi, Kenya</figcaption>
     </figure>

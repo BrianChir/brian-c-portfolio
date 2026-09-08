@@ -33,11 +33,11 @@ const caseStudyStructuredData = {
   description={study.data.description}
   structuredData={caseStudyStructuredData}
 >
-  <article class="section-shell page-stack">
+  <article class="layout-shell page-stack">
     <a href="/work" class="ui-link mb-6 inline-block cursor-pointer text-label-sm font-semibold uppercase text-accent">
       Back to all projects
     </a>
-    <div class="mb-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+    <div class="mb-10 grid gap-8 md:grid-cols-[minmax(0,1fr)_300px] md:items-start lg:grid-cols-[minmax(0,760px)_380px] lg:justify-between lg:gap-14">
       <div>
         <div class="mb-3 flex flex-wrap items-baseline gap-3">
           <span class="font-display text-[28px] font-semibold text-accent">{study.data.number}</span>
@@ -57,7 +57,7 @@ const caseStudyStructuredData = {
       </div>
       <ProjectThumbnail thumbnail={study.data.thumbnail} number={study.data.number} />
     </div>
-    <div class="mb-10 prose-shell max-w-measure">
+    <div class="prose-shell reading-width mb-10">
       <Content />
     </div>
     <CaseStudyDetail study={study.data} />

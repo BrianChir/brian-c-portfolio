@@ -31,14 +31,14 @@ const articleStructuredData = {
   description={article.data.abstract}
   structuredData={articleStructuredData}
 >
-  <article class="section-shell page-stack">
+  <article class="layout-shell page-stack">
     <a href="/thinking" class="ui-link mb-6 inline-block cursor-pointer text-label-sm font-semibold uppercase text-accent">
       Back to thinking
     </a>
     <p class="mb-3 text-label-sm font-semibold uppercase text-accent">{article.data.category}</p>
-    <h1 class="mb-4 max-w-measure font-display text-page-title font-normal text-text">{article.data.title}</h1>
+    <h1 class="reading-width mb-4 font-display text-page-title font-normal text-text">{article.data.title}</h1>
     {article.data.readingTime && <p class="mb-8 text-small text-text-secondary">{article.data.readingTime}</p>}
-    <div class="prose-shell max-w-measure">
+    <div class="prose-shell reading-width">
       <Content />
     </div>
   </article>

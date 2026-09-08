@@ -27,10 +27,10 @@ const workStructuredData = {
   description="Explore Brian Chirchir's product management portfolio across fintech, M-PESA, PAYGO solar, civic tech, SaaS, AI, edtech, and entrepreneurship training."
   structuredData={workStructuredData}
 >
-  <section class="section-shell page-stack">
+  <section class="layout-shell page-stack">
     <p class="eyebrow mb-2">Products</p>
     <h1 class="mb-3 font-display text-page-title font-normal">Products I have helped build.</h1>
-    <p class="mb-7 max-w-[620px] text-[13px] leading-6 text-text-secondary">Seven products spanning fintech, civic tech, clean energy, AI, and entrepreneurship. Each project follows the same thread: a real problem, real constraints, and decisions made with incomplete information.</p>
+    <p class="reading-width mb-7 text-[13px] leading-6 text-text-secondary">Seven products spanning fintech, civic tech, clean energy, AI, and entrepreneurship. Each project follows the same thread: a real problem, real constraints, and decisions made with incomplete information.</p>
     <div class="mb-9 grid grid-cols-2 gap-2 sm:grid-cols-4">{[['Shipped work','7 Products'],['Core domain','Fintech & IoT'],['Regional scope','East Africa'],['Method','HCD & Agile']].map(([a,b])=><div class="card p-4"><p class="text-[8px] uppercase text-text-muted">{a}</p><p class="mt-1 text-[12px] font-semibold">{b}</p></div>)}</div>
     <div class="space-y-10">{products.map((product) => <ProductCard product={product} />)}</div>
     <div class="card mt-12 flex flex-col items-start justify-between gap-4 p-7 sm:flex-row sm:items-center"><div><p class="eyebrow">Want to work together?</p><h2 class="font-display text-[20px]">Tell me what you're building — or where you're stuck.</h2></div><a href="/services" class="button-dark">See how we can work together →</a></div>
